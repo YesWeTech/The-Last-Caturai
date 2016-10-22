@@ -49,7 +49,9 @@ class Physics(pygame.sprite.Sprite):
         self.__y_speed_vector__ = abs(angle)
 
     def move_right(self):
-        self.__position_x__ += self.__x_speed_vector__
+        x = self.position[0]
+        x += self.__x_speed_vector__
+        self.position = (x,self.position[1])
 
     def move_left(self):
         self.__position_x__ -= self.__x_speed_vector__
