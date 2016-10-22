@@ -36,7 +36,7 @@ class Director:
         self.scene = None
         self.quit_flag = False
         self.clock = pygame.time.Clock()
-        self.main_character = MainCharacter(hp=10, position=(100,100), sprite=os.path.abspath("resources/graphics/sprites/prueba.png"),is_girl=True)
+        self.main_character = MainCharacter(hp=10, position=(100,infoScreen.current_h - 150), sprite=os.path.abspath("resources/graphics/sprites/prueba.png"),is_girl=True)
 
     def loop(self):
         """Starts the game"""

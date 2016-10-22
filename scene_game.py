@@ -54,8 +54,7 @@ class SceneGame(scene.Scene):
         screen.blit(timer_label, timer_label_rect)
 
         #Load main character
-        image = graphics.load_image(os.path.abspath(main_character.sprite), True)
-        screen.blit(image, (100, infoScreen.current_h - 130), (0, 0, 32, 32))
+        main_character.draw(screen)
 
     def on_resize(self, screen, event):
         screen = pygame.display.set_mode(event.dict['size'], HWSURFACE|DOUBLEBUF|RESIZABLE)
