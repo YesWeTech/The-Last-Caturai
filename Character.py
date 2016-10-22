@@ -22,7 +22,7 @@ class Character:
 
         for f in range(fil):
             for c in range(col):
-                sprite[f]1 = image.subsurface((rect.left, rect.top, w, h))
+                sprite[f] = image.subsurface((rect.left, rect.top, w, h))
                 rect.left += w
             rect.top += h
             rect.left = 0
