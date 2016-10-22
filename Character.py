@@ -22,8 +22,7 @@ class Character:
 
         for f in range(fil):
             for c in range(col):
-                sprite[f]
-                1 = image.subsurface((rect.left, rect.top, w, h))
+                sprite[f] = image.subsurface((rect.left, rect.top, w, h))
                 rect.left += w
             rect.top += h
             rect.left = 0
@@ -41,3 +40,9 @@ class Character:
                 color = image.get_at(pixel)
                 image.set_colorkey(color, pygame.RLEACCEL)
         return image
+
+    def attack(self):
+        raise NotImplemented("Implement the atack in MainCharacter and Enemy")
+
+    def movement(self):
+        raise NotImplemented("Implement the atack in MainCharacter and Enemy")
