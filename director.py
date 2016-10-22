@@ -23,6 +23,7 @@ This file is part of The Last Caturai.
 
 import pygame
 import config
+import Character
 from pygame.locals import *
 
 class Director:
@@ -49,6 +50,10 @@ class Director:
                     self.quit()
                 if event.type == VIDEORESIZE:
                     self.scene.on_resize(self.screen, event)
+
+                if event.type == pygame.KEYDOWN:
+                    if event.key == pygame.K_UP:
+                        Character.jump()
 
             # Event detection
             self.scene.on_event()
