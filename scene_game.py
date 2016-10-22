@@ -5,6 +5,7 @@
 """Class SceneGame, the first scene of the game, when it starts."""
 
 import scene
+import pygame
 import config
 import graphics
 
@@ -21,4 +22,5 @@ class SceneGame(scene.Scene):
         pass
 
     def on_draw(self, screen):
-        screen.blit(self.back, (0,0))
+        infoScreen = pygame.display.Info()
+        screen.blit(pygame.transform.scale(self.back, (infoScreen.current_w, infoScreen.current_h)), (0,0))

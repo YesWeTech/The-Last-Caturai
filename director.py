@@ -6,12 +6,13 @@
 
 import pygame
 import config
+from pygame.locals import *
 
 class Director:
 
     def __init__(self):
         infoScreen = pygame.display.Info()
-        self.screen = pygame.display.set_mode((infoScreen.current_w, infoScreen.current_h))
+        self.screen = pygame.display.set_mode((infoScreen.current_w, infoScreen.current_h), RESIZABLE)
         pygame.display.set_caption(config.name)
         self.scene = None
         self.quit_flag = False
