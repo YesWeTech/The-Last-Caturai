@@ -7,7 +7,7 @@ class Character:
     def __init__(self, hp, position, sprite):
         self.hp = hp
         self.position = position
-        self.sprite = self._cortar_chara(ruta=sprite, 4, 4)
+        self.sprite = self._cortar_chara(ruta=sprite, fil=4, col=4)
         self.image = self.sprite[0][0]
         self.rect = self.image.get_rect()
 
