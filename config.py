@@ -30,8 +30,8 @@ import sys
 name = "The Last Caturai"
 
 # Default screen resolution - window sizs
-WIDTH = 640
-HEIGHT = 480
+WIDTH = 800
+HEIGHT = 600
 
 # Folder structure
 sprites = "resources/graphics/sprites/"
@@ -41,3 +41,5 @@ music = "resources/audio/music/"
 sounds = "resources/audio/sounds/"
 fonts = "resources/fonts/"
 levels = "levels/"
+main_music = "Rosver_-_Atomic_Weight_8Bit.mp3"
+jump_sound = "270323__littlerobotsoundfactory__jump-03.wav"
