@@ -6,11 +6,13 @@
 
 import scene
 import config
+import graphics
 
 class SceneGame(scene.Scene):
 
     def __init__(self, director):
-        scene.Scene.__init__(self, director) 
+        scene.Scene.__init__(self, director)
+        self.back = graphics.load_image(config.backs+"temp_background.png", False)
 
     def on_update(self):
         pass
@@ -19,4 +21,4 @@ class SceneGame(scene.Scene):
         pass
 
     def on_draw(self, screen):
-        pass
+        screen.blit(self.back, (0,0))
