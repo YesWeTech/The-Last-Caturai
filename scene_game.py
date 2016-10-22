@@ -22,9 +22,12 @@ class SceneGame(scene.Scene):
     def on_event(self):
         pass
 
-    def on_draw(self, screen):
+    def on_draw(self, screen, seconds):
         infoScreen = pygame.display.Info()
+        font_color = (0, 0, 0)
+        timer, timer_rect = graphics.text("Time: "+str(seconds), infoScreen.current_w-80, 30, font_color, 20)
         screen.blit(pygame.transform.scale(self.back, (infoScreen.current_w, infoScreen.current_h)), (0,0))
+        screen.blit(timer, timer_rect)
 
     def on_resize(self, screen, event):
         screen = pygame.display.set_mode(event.dict['size'], HWSURFACE|DOUBLEBUF|RESIZABLE)

@@ -21,6 +21,8 @@ class Director:
     def loop(self):
         """Starts the game"""
 
+        seconds = 0
+
         while not self.quit_flag:
             self.time = self.clock.tick(60)
 
@@ -38,7 +40,8 @@ class Director:
             self.scene.on_update()
 
             # Draws scene
-            self.scene.on_draw(self.screen)
+            seconds += self.time
+            self.scene.on_draw(self.screen, seconds)
             pygame.display.flip()
 
     def change_scene(self, scene):
