@@ -42,22 +42,26 @@ class Physics(pygame.sprite.Sprite):
 
     # Set the value of the speed vector
     def change_x_speed_vector(self, speed):
-        self.__x_speed_vector_ = abs(speed)
+        self.x_speed_vector_ = abs(speed)
 
     # Set the angle of the movement in radians
     def change_y_speed_vector(self, angle):
-        self.__y_speed_vector__ = abs(angle)
+        self.y_speed_vector__ = abs(angle)
 
     def move_right(self):
         x = self.position[0]
         y = self.position[1]
         x += 10
+        self.x_speed_vector_ = 10
+        # self.change_x_speed_vector(10)
         self.position = (x,y)
 
     def move_left(self):
         x = self.position[0]
         y = self.position[1]
         x -= 10
+        self.x_speed_vector_ = -10
+        # self.change_x_speed_vector(-10)
         self.position = (x,y)
 
     def stop_moving(self):
@@ -77,4 +81,7 @@ class Physics(pygame.sprite.Sprite):
             self.rect.y = constants.SCREEN_HEIGHT - self.rect.height
 
     def update(self):
-        pass
+        self.gravity()
+
+        self.rect.x += self.x_speed_vector_
+

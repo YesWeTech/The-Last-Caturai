@@ -45,7 +45,6 @@ class Director:
 
         while not self.quit_flag:
             self.time = self.clock.tick(60)
-
             # Exit events
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
@@ -53,7 +52,7 @@ class Director:
                 #if event.type == VIDEORESIZE:
                     #self.scene.on_resize(self.screen, event)
 
-                if event.type == pygame.KEYDOWN:
+                elif event.type == pygame.KEYDOWN:
                     if event.key == pygame.K_LEFT:
                         self.main_character.move_left()
 
@@ -66,12 +65,12 @@ class Director:
                         os.path.abspath(config.sounds+config.jump_sound))
                         jump_sound.play()
                         #self.main_character.jump()
-                #
-                # if event.type == pygame.KEYUP:
-                #     if event.key == pygame.K_LEFT and self.main_character.rect.x < 0:
-                #         self.main_character.stop()
-                #     if event.key == pygame.K_RIGHT and self.main_character.rect.x > 0:
-                #         self.main_character.stop()
+
+                elif event.type == pygame.KEYUP:
+                    if event.key == pygame.K_LEFT and self.main_character.x_speed_vector_ < 0:
+                        self.main_character.stop_moving()
+                    if event.key == pygame.K_RIGHT and self.main_character.x_speed_vector_ > 0:
+                        self.main_character.stop_moving()
 
             # Event detection
             self.scene.on_event()
