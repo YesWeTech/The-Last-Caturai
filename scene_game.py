@@ -39,8 +39,8 @@ class SceneGame(scene.Scene):
         pygame.mixer.music.play(1)
         tmx_file = os.path.join(os.getcwd(), config.levels+'level1.tmx')
         tile_renderer = tilerender.Renderer(tmx_file)
-        map_surface = tile_renderer.make_map()
-        map_rect = map_surface.get_rect()
+        self.back = tile_renderer.make_map()
+        self.rect = self.back.get_rect()
 
     def on_update(self):
         pass
@@ -57,7 +57,7 @@ class SceneGame(scene.Scene):
                                           40)
         timer, timer_rect = graphics.text("{00000000}".format(seconds), infoScreen.current_w-80, 30, font_color, 40)
         #screen.blit(pygame.transform.scale(self.back, (infoScreen.current_w, infoScreen.current_h)), (0,0))
-        screen.blit(pygame.transform.scale(map_surface, map_rect))
+        screen.blit(pygame.transform.scale(self.back, (infoScreen.current_w, infoScreen.current_h)), self.rect)
         screen.blit(timer, timer_rect)
         screen.blit(timer_label, timer_label_rect)
 
