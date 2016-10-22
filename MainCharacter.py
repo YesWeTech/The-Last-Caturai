@@ -28,6 +28,7 @@ class MainCharacter(Character):
     def __init__(self, hp, position, sprite, is_girl):
         super(MainCharacter, self).__init__(hp, position, sprite)
         self.is_girl = is_girl
+        self.sprite = sprite
 
     def attack(self):
         pass

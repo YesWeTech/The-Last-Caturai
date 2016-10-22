@@ -75,7 +75,7 @@ class Director:
 
             # Draws scene
             seconds += self.time
-            self.scene.on_draw(self.screen, seconds)
+            self.scene.on_draw(self.screen, seconds, self.main_character)
             pygame.display.flip()
 
     def change_scene(self, scene):
