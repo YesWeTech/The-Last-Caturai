@@ -72,5 +72,3 @@ class Physics(pygame.sprite.Sprite):
 
     def update(self):
         pass
-
-

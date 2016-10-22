@@ -23,14 +23,11 @@ This file is part of The Last Caturai.
 """Defines the main character of the game"""
 
 from Character import Character
-import Physics
-import os
 
 class MainCharacter(Character):
     def __init__(self, hp, position, sprite, is_girl):
         super(MainCharacter, self).__init__(hp, position, sprite)
         self.is_girl = is_girl
-        physics = Physics("resources/graphics/sprites/prueba.png",(10,10))
 
     def attack(self):
         pass

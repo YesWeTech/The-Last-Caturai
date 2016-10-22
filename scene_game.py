@@ -52,9 +52,9 @@ class SceneGame(scene.Scene):
         screen.blit(timer_label, timer_label_rect)
 
         # image = graphics.load_image(os.path.abspath("resources/graphics/sprites/prueba.png"), True)
-        prueba = Character(hp=10, position=(100,100), sprite=os.path.abspath("resources/graphics/sprites/prueba.png"))
+
         # screen.blit(prueb, (100,infoScreen.current_h-130), (0, 0, 32, 32))
-        prueba.draw(screen)
+        # prueba.draw(screen)
 
     def on_resize(self, screen, event):
         screen = pygame.display.set_mode(event.dict['size'], HWSURFACE|DOUBLEBUF|RESIZABLE)

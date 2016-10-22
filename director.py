@@ -22,8 +22,9 @@ This file is part of The Last Caturai.
 """Class Director, it contains the game loop, and manages events."""
 
 import pygame
+import os
 import config
-import MainCharacter
+from MainCharacter import MainCharacter
 from pygame.locals import *
 
 class Director:
@@ -35,6 +36,7 @@ class Director:
         self.scene = None
         self.quit_flag = False
         self.clock = pygame.time.Clock()
+        self.main_character = MainCharacter(hp=10, position=(100,100), sprite=os.path.abspath("resources/graphics/sprites/prueba.png"),is_girl=True)
 
     def loop(self):
         """Starts the game"""
@@ -53,17 +55,17 @@ class Director:
 
                 if event.type == pygame.KEYDOWN:
                     if event.key == pygame.K_LEFT:
-                        MainCharacter.go_left()
+                        self.main_character.go_left()
                     if event.key == pygame.K_RIGHT:
-                        MainCharacter.go_right()
+                        self.main_character.go_right()
                     if event.key == pygame.K_UP:
-                        MainCharacter.jump()
+                        self.main_character.jump()
 
                 if event.type == pygame.KEYUP:
                     if event.key == pygame.K_LEFT and MainCharacter.rect.x < 0:
-                        MainCharacter.stop()
+                        self.main_character.stop()
                     if event.key == pygame.K_RIGHT and MainCharacter.rect.x > 0:
-                        MainCharacter.stop()
+                        self.main_character.stop()
 
             # Event detection
             self.scene.on_event()
