@@ -55,7 +55,10 @@ class Physics(pygame.sprite.Sprite):
         self.position = (x,y)
 
     def move_left(self):
-        self.__position_x__ -= self.__x_speed_vector__
+        x = self.position[0]
+        y = self.position[1]
+        x -= 10
+        self.position = (x,y)
 
     def stop_moving(self):
         self.change_x_speed_vector(0)
