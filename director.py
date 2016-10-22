@@ -28,6 +28,8 @@ class Director:
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     self.quit()
+                if event.type == VIDEORESIZE:
+                    self.scene.on_resize(self.screen, event)
 
             # Event detection
             self.scene.on_event()

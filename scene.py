@@ -18,3 +18,6 @@ class Scene:
 
     def on_draw(self, screen):
         raise NotImplemented("on_draw method not implemented.")
+
+    def on_resize(self, screen, event):
+        raise NotImplemented("on_resize method not implemented.")

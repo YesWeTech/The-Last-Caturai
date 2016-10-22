@@ -24,8 +24,8 @@ class SceneGame(scene.Scene):
 
     def on_draw(self, screen):
         infoScreen = pygame.display.Info()
-        event = pygame.event.wait()
-        if event.type == VIDEORESIZE:
-            screen.blit(pygame.transform.scale(self.back, event.dict['size']), (0,0))
-        else:
-            screen.blit(pygame.transform.scale(self.back, (infoScreen.current_w, infoScreen.current_h)), (0,0))
+        screen.blit(pygame.transform.scale(self.back, (infoScreen.current_w, infoScreen.current_h)), (0,0))
+
+    def on_resize(self, screen, event):
+        screen = pygame.display.set_mode(event.dict['size'], HWSURFACE|DOUBLEBUF|RESIZABLE)
+        screen.blit(pygame.transform.scale(self.back, event.dict['size']), (0,0))
