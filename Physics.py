@@ -28,3 +28,4 @@ class Physics(pygame.sprite.Sprite):
         # self.__limits__
 
         def collisions(self, group, destroy_ob):
+            pass
