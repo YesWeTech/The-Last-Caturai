@@ -25,7 +25,6 @@ import scene
 import pygame
 import config
 import graphics
-import os
 from pygame.locals import *
 
 class SceneGame(scene.Scene):
@@ -49,10 +48,6 @@ class SceneGame(scene.Scene):
         screen.blit(pygame.transform.scale(self.back, (infoScreen.current_w, infoScreen.current_h)), (0,0))
         screen.blit(timer, timer_rect)
         screen.blit(timer_label, timer_label_rect)
-
-        #sprite = graphics.get_image(os.path.abspath("resources/graphics/sprites/prueba.png"),100,100,2000,2000)
-        image = graphics.load_image(os.path.abspath("resources/graphics/sprites/prueba.png"), True)
-        screen.blit(image, (100,100))
 
     def on_resize(self, screen, event):
         screen = pygame.display.set_mode(event.dict['size'], HWSURFACE|DOUBLEBUF|RESIZABLE)
