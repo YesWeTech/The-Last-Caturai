@@ -34,7 +34,7 @@ def load_image(path, transparent):
     image = image.convert()
     if transparent:
         color = image.get_at((0, 0))
-        image.set_colorkey(color, RLEACCEL)
+        image.set_colorkey(color, pygame.RLEACCEL)
     return image
 
 # Function to manage texts
