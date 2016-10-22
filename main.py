@@ -4,25 +4,16 @@
 
 """Main file. Initialises pygame."""
 
-import pygame, sys
-from pygame.locals import *
-import config
+import pygame
+import director
+import scene_game
 
-# Define main
 def main():
-    # Creating screen
-    infoScreen = pygame.display.Info()
-    screen = pygame.display.set_mode((infoScreen.current_w, infoScreen.current_h))
-    pygame.display.set_caption(config.name)
+    dir = director.Director()
+    scene = scene_game.SceneGame(dir)
+    dir.change_scene(scene)
+    dir.loop()
 
-    # Maintains screen opened unless manually closed
-    while True:
-        for event in pygame.event.get():
-            if event.type == QUIT:
-                sys.exit()
-    return 0
-
-# Initialise pygame
 if __name__ == '__main__':
     pygame.init()
     main()
