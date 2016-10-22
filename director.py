@@ -22,8 +22,9 @@ This file is part of The Last Caturai.
 """Class Director, it contains the game loop, and manages events."""
 
 import pygame
+import os
 import config
-import Character
+from MainCharacter import MainCharacter
 from pygame.locals import *
 
 class Director:
@@ -35,6 +36,7 @@ class Director:
         self.scene = None
         self.quit_flag = False
         self.clock = pygame.time.Clock()
+        self.main_character = MainCharacter(hp=10, position=(100,infoScreen.current_h - 150), sprite=os.path.abspath("resources/graphics/sprites/prueba.png"),is_girl=True)
 
     def loop(self):
         """Starts the game"""
@@ -52,8 +54,18 @@ class Director:
                     self.scene.on_resize(self.screen, event)
 
                 if event.type == pygame.KEYDOWN:
+                    if event.key == pygame.K_LEFT:
+                        self.main_character.go_left()
+                    if event.key == pygame.K_RIGHT:
+                        self.main_character.go_right()
                     if event.key == pygame.K_UP:
-                        Character.jump()
+                        self.main_character.jump()
+
+                if event.type == pygame.KEYUP:
+                    if event.key == pygame.K_LEFT and MainCharacter.rect.x < 0:
+                        self.main_character.stop()
+                    if event.key == pygame.K_RIGHT and MainCharacter.rect.x > 0:
+                        self.main_character.stop()
 
             # Event detection
             self.scene.on_event()
@@ -63,7 +75,7 @@ class Director:
 
             # Draws scene
             seconds += self.time
-            self.scene.on_draw(self.screen, seconds)
+            self.scene.on_draw(self.screen, seconds, self.main_character)
             pygame.display.flip()
 
     def change_scene(self, scene):

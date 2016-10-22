@@ -44,9 +44,11 @@ class SceneGame(scene.Scene):
     def on_event(self):
         pass
 
-    def on_draw(self, screen, seconds):
+    def on_draw(self, screen, seconds, main_character):
         infoScreen = pygame.display.Info()
         font_color = (0, 0, 0)
+
+        #Load timer
         timer_label, timer_label_rect = graphics.text("Time: ", infoScreen.current_w - 200, 30, font_color,
                                           40)
         timer, timer_rect = graphics.text("{00000000}".format(seconds), infoScreen.current_w-80, 30, font_color, 40)
@@ -54,10 +56,8 @@ class SceneGame(scene.Scene):
         screen.blit(timer, timer_rect)
         screen.blit(timer_label, timer_label_rect)
 
-        # image = graphics.load_image(os.path.abspath("resources/graphics/sprites/prueba.png"), True)
-        prueba = Character(hp=10, position=(10,10), sprite=os.path.abspath("resources/graphics/sprites/prueba.png"))
-        # screen.blit(prueb, (100,infoScreen.current_h-130), (0, 0, 32, 32))
-        prueba.draw(screen)
+        #Load main character
+        main_character.draw(screen)
 
     def on_resize(self, screen, event):
         screen = pygame.display.set_mode(event.dict['size'], HWSURFACE|DOUBLEBUF|RESIZABLE)

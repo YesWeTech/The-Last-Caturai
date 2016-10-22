@@ -26,7 +26,7 @@ This file is part of The Last Caturai.
 
 class Physics(pygame.sprite.Sprite):
 
-    def __init__(self, img_path, position = (0,0)):
+    def __init__(self, img_path, position):
 
         # speed component of the particle
         self.__x_speed_vector__ = 0.
@@ -36,8 +36,9 @@ class Physics(pygame.sprite.Sprite):
         # Update the position of this object by setting the values of rect.x and rect.y
         self.image = load_image(img_path, True)
         self.rect = self.image.get_rect()
-        self.rect.x = position[0]
-        self.rect.y = position[1]
+        # self.rect.x = position[0]
+        # self.rect.y = position[1]
+        self.position = position
 
     # Set the value of the speed vector
     def change_x_speed_vector(self, speed):
@@ -69,3 +70,5 @@ class Physics(pygame.sprite.Sprite):
             self.__position_y__ = 0
             self.rect.y = constants.SCREEN_HEIGHT - self.rect.height
 
+    def update(self):
+        pass

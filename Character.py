@@ -23,6 +23,8 @@ This file is part of The Last Caturai.
 """Defines an abstract character"""
 
 from Physics import Physics
+# import constants # => neccesary for jump method
+# import pygame
 
 class Character(Physics):
     def __init__(self, hp, position, sprite):
@@ -30,7 +32,6 @@ class Character(Physics):
         self.hp = hp
         self.rect = self.image.get_rect()
         self.abajo, self.arriba, self.dcha, self.izq = self._cortar_chara(fil=3)
-        self.img = self.image.subsurface((self.abajo[0][0], self.abajo[0][1], 32, 32))
 
     # Corta un chara en las fil y col indicadas.
     def _cortar_chara(self, fil):
@@ -45,18 +46,27 @@ class Character(Physics):
         izq = [0]*fil
 
         for i in range(fil):
-            abajo[i]  = (0,  i*32)
-            izq[i]    = (32, i*32)
-            dcha[i]   = (64, i*32)
-            arriba[i] = (96, i*32)
+            abajo[i]  = (0,  i*32, 32, 32)
+            izq[i]    = (32, i*32, 32, 32)
+            dcha[i]   = (64, i*32, 32, 32)
+            arriba[i] = (96, i*32, 32, 32)
 
         return (abajo, arriba, dcha, izq)
 
     def draw(self, screen):
-        screen.blit(self.img, self.rect)
+        screen.blit(self.image, self.position, self.abajo[0])
 
     def attack(self):
         raise NotImplemented("Implement the atack in MainCharacter and Enemy")
 
     def movement(self):
         raise NotImplemented("Implement the atack in MainCharacter and Enemy")
+
+    # def jump(self):
+    #     self.rect.y += 2
+    #     platform_hit_list = pygame.sprite.spritecollide(self, self.level.platform_list, False)
+    #     self.rect.y -= 2
+    #     # If it is ok to jump, set our speed upwards
+    #
+    #     if len(platform_hit_list) > 0 or self.rect.bottom >= constants.SCREEN_HEIGHT:
+    #         self.__position_y__ = -10
