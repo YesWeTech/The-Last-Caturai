@@ -46,3 +46,20 @@ def text(text, posx, posy, color, size):
     output_rect.centery = posy
 
     return output, output_rect
+
+# Function that selects a tileset and stores it inside an array
+def select_tileset(path, (width, height)):
+    image = load_image(path, True)
+    rect = image.get_rect()
+    col = rect.width / width
+    fil = rect.height / height
+    sprite = [None]
+
+    for f in range(fil):
+        for c in range(col):
+            sprite.append(image.subsurface((rect.left, rect.top, width, height)))
+            rect.left += width
+        rect.top += height
+        rect.left = 0
+
+    return sprite

@@ -28,12 +28,15 @@ import graphics
 import os
 from pygame.locals import *
 from Character import Character
+from map import *
 
 class SceneGame(scene.Scene):
 
     def __init__(self, director):
         scene.Scene.__init__(self, director)
         self.back = graphics.load_image(config.backs+"temp_background.png", False)
+        #self.back = Map("level1.tmx")
+        #self.back = self.back.create_map()
 
     def on_update(self):
         pass

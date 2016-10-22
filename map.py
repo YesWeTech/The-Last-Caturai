@@ -24,6 +24,7 @@ This file is part of The Last Caturai.
 from xml.dom import minidom, Node
 from utils import *
 import config
+import graphics
 
 class Map:
 
@@ -31,9 +32,10 @@ class Map:
         self.name = name
         self.layers = []
         self.load_map()
+        self.tileset = graphics.select_tileset(config.levels+self.tileset, self.tile_size)
 
     def load_map(self):
-        xmlMap = minidom.parse("levels/"+self.name)
+        xmlMap = minidom.parse(config.levels+self.name)
         mainNode = xmlMap.childNodes[0]
 
         # Map size
@@ -61,6 +63,16 @@ class Map:
                     x = mainNode.childNodes[i].childNodes[1].attributes.get("x").value
                     y = mainNode.childNodes[i].childNodes[1].attributes.get("y").value
                     self.start = (int(x), int(y))
+
+    def create_map(self):
+        self.map = self.layers
+        for i in range(len(self.layers)):
+            for f in range(self.height):
+                for c in range(self.width):
+                    if self.layers[i][f][c]:
+                        self.map[i][f][c] = self.tileset[self.layers[i][f][c]]
+                    else:
+                        self.map[i][f][c] = None
 
 def toArray(list, col):
     newList = []
