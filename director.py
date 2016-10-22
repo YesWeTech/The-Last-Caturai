@@ -31,7 +31,7 @@ class Director:
 
     def __init__(self):
         infoScreen = pygame.display.Info()
-        self.screen = pygame.display.set_mode((config.WIDTH, config.HEIGHT), RESIZABLE)
+        self.screen = pygame.display.set_mode((config.WIDTH, config.HEIGHT))
         pygame.display.set_caption(config.name)
         self.scene = None
         self.quit_flag = False
@@ -50,8 +50,8 @@ class Director:
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     self.quit()
-                if event.type == VIDEORESIZE:
-                    self.scene.on_resize(self.screen, event)
+                #if event.type == VIDEORESIZE:
+                    #self.scene.on_resize(self.screen, event)
 
                 if event.type == pygame.KEYDOWN:
                     if event.key == pygame.K_LEFT:
