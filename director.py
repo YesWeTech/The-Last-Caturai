@@ -23,7 +23,7 @@ This file is part of The Last Caturai.
 
 import pygame
 import config
-import Character
+import MainCharacter
 from pygame.locals import *
 
 class Director:
@@ -52,8 +52,18 @@ class Director:
                     self.scene.on_resize(self.screen, event)
 
                 if event.type == pygame.KEYDOWN:
+                    if event.key == pygame.K_LEFT:
+                        MainCharacter.physics.go_left()
+                    if event.key == pygame.K_RIGHT:
+                        MainCharacter.physics.go_right()
                     if event.key == pygame.K_UP:
-                        Character.jump()
+                        MainCharacter.physics.jump()
+
+                if event.type == pygame.KEYUP:
+                    if event.key == pygame.K_LEFT and MainCharacter.rect.x < 0:
+                        MainCharacter.physics.stop()
+                    if event.key == pygame.K_RIGHT and MainCharacter.rect.x > 0:
+                        MainCharacter.physics.stop()
 
             # Event detection
             self.scene.on_event()
