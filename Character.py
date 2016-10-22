@@ -1,7 +1,7 @@
 #! /usr/bin/env python
 # -*- coding: utf-8 -*-
 
-class Personaje:
+class Character:
     def __init__(self, hp, position, sprite):
         self.hp = hp
         self.position = position
