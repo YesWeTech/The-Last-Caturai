@@ -39,6 +39,7 @@ class Character(Physics):
         #       * sprites de movimiento hacia la derecha
         #       * sprites de movimiento hacia arriba
         #       * sprites de movimiento hacia abajo
+        # HELP T_T
         abajo = [0]*fil
         arriba = [0]*fil
         dcha = [0]*fil
