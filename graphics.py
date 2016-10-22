@@ -22,7 +22,7 @@ def load_image(path, transparent):
 
 # Function to manage texts
 def text(text, posx, posy, color, size):
-    font = pygame.font.Font(config.fonts+"telegrama_raw.otf", size)
+    font = pygame.font.Font(config.fonts+"ShrimpFriedRiceNo1.ttf", size)
     output = pygame.font.Font.render(font, text, 1, color) # Transforms font into a Sprite
     output_rect = output.get_rect()
     output_rect.centerx = posx
