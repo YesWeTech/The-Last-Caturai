@@ -17,10 +17,10 @@ WIDTH = 640
 HEIGHT = 480
 
 # Folder structure
-sprites = "data/graphics/sprites/"
-backs = "data/graphics/backgrounds/"
-menus = "data/graphics/menus/"
-music = "data/audio/music/"
-sounds = "data/audio/sounds/"
+sprites = "resources/graphics/sprites/"
+backs = "resources/graphics/backgrounds/"
+menus = "resources/graphics/menus/"
+music = "resources/audio/music/"
+sounds = "resources/audio/sounds/"
 fonts = "data/fonts/"
 levels = "levels/"
