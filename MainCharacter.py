@@ -22,7 +22,7 @@ This file is part of The Last Caturai.
 
 """Defines the main character of the game"""
 
-import Character
+from Character import Character
 import Physics
 import os
 

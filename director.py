@@ -53,17 +53,17 @@ class Director:
 
                 if event.type == pygame.KEYDOWN:
                     if event.key == pygame.K_LEFT:
-                        MainCharacter.physics.go_left()
+                        MainCharacter.go_left()
                     if event.key == pygame.K_RIGHT:
-                        MainCharacter.physics.go_right()
+                        MainCharacter.go_right()
                     if event.key == pygame.K_UP:
-                        MainCharacter.physics.jump()
+                        MainCharacter.jump()
 
                 if event.type == pygame.KEYUP:
                     if event.key == pygame.K_LEFT and MainCharacter.rect.x < 0:
-                        MainCharacter.physics.stop()
+                        MainCharacter.stop()
                     if event.key == pygame.K_RIGHT and MainCharacter.rect.x > 0:
-                        MainCharacter.physics.stop()
+                        MainCharacter.stop()
 
             # Event detection
             self.scene.on_event()

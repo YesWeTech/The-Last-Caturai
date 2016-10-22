@@ -70,3 +70,7 @@ class Physics(pygame.sprite.Sprite):
             self.__position_y__ = 0
             self.rect.y = constants.SCREEN_HEIGHT - self.rect.height
 
+    def update(self):
+        pass
+
+

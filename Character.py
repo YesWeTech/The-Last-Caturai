@@ -59,3 +59,4 @@ class Character(Physics):
 
     def movement(self):
         raise NotImplemented("Implement the atack in MainCharacter and Enemy")
+
