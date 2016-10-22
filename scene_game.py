@@ -8,6 +8,7 @@ import scene
 import pygame
 import config
 import graphics
+from pygame.locals import *
 
 class SceneGame(scene.Scene):
 
@@ -23,4 +24,8 @@ class SceneGame(scene.Scene):
 
     def on_draw(self, screen):
         infoScreen = pygame.display.Info()
-        screen.blit(pygame.transform.scale(self.back, (infoScreen.current_w, infoScreen.current_h)), (0,0))
+        event = pygame.event.wait()
+        if event.type == VIDEORESIZE:
+            screen.blit(pygame.transform.scale(self.back, event.dict['size']), (0,0))
+        else:
+            screen.blit(pygame.transform.scale(self.back, (infoScreen.current_w, infoScreen.current_h)), (0,0))
