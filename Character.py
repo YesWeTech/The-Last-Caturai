@@ -7,11 +7,13 @@ class Character:
     def __init__(self, hp, position, sprite):
         self.hp = hp
         self.position = position
-        self.sprite = sprite
+        self.sprite = self._cortar_chara(ruta=sprite, 4, 4)
+        self.image = self.sprite[0][0]
+        self.rect = self.image.get_rect()
 
     # Corta un chara en las fil y col indicadas. Array Bidimensional.
     # tomada de: http://razonartificial.com/2010/06/engine-xi-creando-al-heroe/
-    def cortar_chara(self, ruta, fil, col):
+    def _cortar_chara(self, ruta, fil, col):
         image = self.load_image(ruta, True)
         rect = image.get_rect()
         w = rect.w / col
@@ -28,6 +30,9 @@ class Character:
             rect.left = 0
 
         return sprite
+
+    def draw(self, screen):
+        screen.blit(self.image, self.rect)
 
     # Carga una imagen transparencia y color tranasparente opcionales.
     # tomada de: http://razonartificial.com/2010/06/engine-xi-creando-al-heroe/
