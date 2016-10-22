@@ -6,11 +6,12 @@
 """Defines an abstract character"""
 
 from graphics import load_image
+import Physics
 
-class Character:
+class Character(Physics):
     def __init__(self, hp, position, sprite):
+        super(Character, self).__init__(position = position)
         self.hp = hp
-        self.position = position
         self.sprite = self._cortar_chara(ruta=sprite, fil=4, col=4)
         self.image = self.sprite[0][0]
         self.rect = self.image.get_rect()
