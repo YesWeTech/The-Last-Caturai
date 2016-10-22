@@ -31,12 +31,12 @@ class Director:
 
     def __init__(self):
         infoScreen = pygame.display.Info()
-        self.screen = pygame.display.set_mode((infoScreen.current_w, infoScreen.current_h), RESIZABLE)
+        self.screen = pygame.display.set_mode((config.WIDTH, config.HEIGHT))
         pygame.display.set_caption(config.name)
         self.scene = None
         self.quit_flag = False
         self.clock = pygame.time.Clock()
-        self.main_character = MainCharacter(hp=10, position=(100,infoScreen.current_h - 150), sprite=os.path.abspath("resources/graphics/sprites/prueba.png"),is_girl=True)
+        self.main_character = MainCharacter(hp=10, position=(100,config.HEIGHT - 100), sprite=os.path.abspath("resources/graphics/sprites/prueba.png"),is_girl=True)
 
     def loop(self):
         """Starts the game"""
@@ -50,8 +50,8 @@ class Director:
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     self.quit()
-                if event.type == VIDEORESIZE:
-                    self.scene.on_resize(self.screen, event)
+                #if event.type == VIDEORESIZE:
+                    #self.scene.on_resize(self.screen, event)
 
                 if event.type == pygame.KEYDOWN:
                     if event.key == pygame.K_LEFT:
@@ -63,7 +63,7 @@ class Director:
 
                     if event.key == pygame.K_UP:
                         jump_sound = pygame.mixer.Sound(
-                        os.path.abspath("resources/audio/sounds/270323__littlerobotsoundfactory__jump-03.wav"))
+                        os.path.abspath(config.sounds+config.jump_sound))
                         jump_sound.play()
                         #self.main_character.jump()
                 #
