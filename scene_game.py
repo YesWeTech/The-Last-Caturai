@@ -27,7 +27,6 @@ import config
 import graphics
 import os
 from pygame.locals import *
-from Character import Character
 import tilerender
 
 class SceneGame(scene.Scene):

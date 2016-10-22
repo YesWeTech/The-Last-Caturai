@@ -110,7 +110,7 @@ def _load_images_pygame(tmxdata, mapping, *args, **kwargs):
             force_colorkey = pygame.Color(*force_colorkey)
         except:
             msg = 'Cannot understand color: {0}'
-            print msg.format(force_colorkey)
+            print (msg.format(force_colorkey))
             raise ValueError
 
     # change background color into something nice
@@ -140,8 +140,8 @@ def _load_images_pygame(tmxdata, mapping, *args, **kwargs):
         width -= (w - ts.margin) % tilewidth
 
         # using product avoids the overhead of nested loops
-        p = itertools.product(xrange(ts.margin, height + ts.margin, tileheight),
-                              xrange(ts.margin, width + ts.margin, tilewidth))
+        p = itertools.product(range(ts.margin, height + ts.margin, tileheight),
+                              range(ts.margin, width + ts.margin, tilewidth))
 
         colorkey = getattr(ts, 'trans', None)
         if colorkey:
