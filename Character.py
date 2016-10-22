@@ -22,9 +22,7 @@ class Character:
 
         for f in range(fil):
             for c in range(col):
-                sprite[f]
-                # var1 como nombre provisional ^^U
-                var1 = image.subsurface((rect.left, rect.top, w, h))
+                sprite[f]1 = image.subsurface((rect.left, rect.top, w, h))
                 rect.left += w
             rect.top += h
             rect.left = 0
@@ -44,4 +42,7 @@ class Character:
         return image
 
     def attack(self):
+        raise NotImplemented("Implement the atack in MainCharacter and Enemy")
+
+    def movement(self):
         raise NotImplemented("Implement the atack in MainCharacter and Enemy")
