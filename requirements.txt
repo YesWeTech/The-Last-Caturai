@@ -1,4 +1,3 @@
 # To be installed by $ pip install -r requirements.txt
 pygame
-constants
 pytmx
