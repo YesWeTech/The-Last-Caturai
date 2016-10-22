@@ -22,36 +22,41 @@ This file is part of The Last Caturai.
 
 """Defines an abstract character"""
 
-from graphics import load_image
-import Physics
+from Physics import Physics
 
 class Character(Physics):
     def __init__(self, hp, position, sprite):
-        super(Character, self).__init__(position = position)
+        super(Character, self).__init__(img_path=sprite, position = position)
         self.hp = hp
-        self.sprite = self._cortar_chara(ruta=sprite, fil=4, col=4)
-        self.image = self.sprite[0][0]
+        self.abajo, self.arriba, self.dcha, self.izq = self._cortar_chara(fil=3)
         self.rect = self.image.get_rect()
 
     # Corta un chara en las fil y col indicadas. Array Bidimensional.
     # tomada de: http://razonartificial.com/2010/06/engine-xi-creando-al-heroe/
-    def _cortar_chara(self, ruta, fil, col):
-        image = load_image(ruta, True)
-        rect = image.get_rect()
-        w = rect.w / col
-        h = rect.h / fil
-        sprite = range(fil)
+    def _cortar_chara(self, fil):
+        # La idea de esta función es devolver una tupla con cuatro vectores:
+        #       * sprites de movimiento hacia la izquierda
+        #       * sprites de movimiento hacia la derecha
+        #       * sprites de movimiento hacia arriba
+        #       * sprites de movimiento hacia abajo
+        abajo = [0]*fil
+        arriba = [0]*fil
+        dcha = [0]*fil
+        izq = [0]*fil
+
         for i in range(fil):
-            sprite[i] = range(col)
+            # self.abajo[i] = self.image[i*32:(i+1)*32,i*32:(i+1)*32]
+            # self.izq[i] = self.image[i * 32:(i + 1) * 32, (i+1) * 32:(i + 2) * 32]
+            # self.dcha[i] = self.image[i * 32:(i + 1) * 32, (i + 2) * 32:(i + 3) * 32]
+            # self.arriba[i] = self.image[i * 32:(i + 1) * 32, (i + 3) * 32:(i + 4) * 32]
+            abajo[i] = self.rect[i]
+            # izq[i] = self.rect[i+1]
+            # dcha[i] = self.rect[i+2]
+            # arriba[i] = self.rect[i+3]
 
-        for f in range(fil):
-            for c in range(col):
-                sprite[f] = image.subsurface((rect.left, rect.top, w, h))
-                rect.left += w
-            rect.top += h
-            rect.left = 0
+        self.image = self.abajo[0]
 
-        return sprite
+        return (abajo, arriba, dcha, izq)
 
     def draw(self, screen):
         screen.blit(self.image, self.rect)
