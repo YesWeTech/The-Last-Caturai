@@ -1,6 +1,10 @@
 #! /usr/bin/env python
 # -*- coding: utf-8 -*-
 
+"""MainCharacter.py"""
+
+"""Defines the main character of the game"""
+
 import Character
 
 class MainCharacter(Character):
@@ -8,8 +12,8 @@ class MainCharacter(Character):
         super(MainCharacter, self).__init__(hp, position, sprite)
         self.is_girl = is_girl
 
-    def attack():
+    def attack(self):
         pass
 
-    def movement():
+    def movement(self):
         pass    

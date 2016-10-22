@@ -1,6 +1,10 @@
 #! /usr/bin/env python
 # -*- coding: utf-8 -*-
 
+"""character.py"""
+
+"""Defines an abstract character"""
+
 import pygame
 
 class Character:
