@@ -27,19 +27,18 @@ import config
 import graphics
 import os
 from pygame.locals import *
-import tilerender
+from Character import Character
+from map import *
 
 class SceneGame(scene.Scene):
 
     def __init__(self, director):
         scene.Scene.__init__(self, director)
-        #self.back = graphics.load_image(config.backs+"temp_background.png", False)
+        self.back = graphics.load_image(config.backs+"temp_background.png", False)
         pygame.mixer.music.load(os.path.abspath("resources/audio/music/Rosver_-_Atomic_Weight_8Bit.mp3"))
         pygame.mixer.music.play(1)
-        tmx_file = os.path.join(os.getcwd(), config.levels+'level1.tmx')
-        tile_renderer = tilerender.Renderer(tmx_file)
-        self.back = tile_renderer.make_map()
-        self.rect = self.back.get_rect()
+        #self.back = Map("level1.tmx")
+        #self.back = self.back.create_map()
 
     def on_update(self):
         pass
@@ -55,8 +54,7 @@ class SceneGame(scene.Scene):
         timer_label, timer_label_rect = graphics.text("Time: ", infoScreen.current_w - 200, 30, font_color,
                                           40)
         timer, timer_rect = graphics.text("{00000000}".format(seconds), infoScreen.current_w-80, 30, font_color, 40)
-        #screen.blit(pygame.transform.scale(self.back, (infoScreen.current_w, infoScreen.current_h)), (0,0))
-        screen.blit(pygame.transform.scale(self.back, (infoScreen.current_w, infoScreen.current_h)), self.rect)
+        screen.blit(pygame.transform.scale(self.back, (infoScreen.current_w, infoScreen.current_h)), (0,0))
         screen.blit(timer, timer_rect)
         screen.blit(timer_label, timer_label_rect)
 

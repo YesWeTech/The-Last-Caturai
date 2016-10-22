@@ -33,7 +33,7 @@ class Character(Physics):
         self.rect = self.image.get_rect()
         self.abajo, self.arriba, self.dcha, self.izq = self._cortar_chara(fil=3)
 
-    # Corta un sprite en las fil y col indicadas.
+    # Corta un chara en las fil y col indicadas.
     def _cortar_chara(self, fil):
         # La idea de esta función es devolver una tupla con cuatro vectores:
         #       * sprites de movimiento hacia la izquierda
