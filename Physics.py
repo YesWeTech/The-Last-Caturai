@@ -1,5 +1,6 @@
 import math, pygame
 from graphics import load_image
+import constants
 
 """Physics.py"""
 
@@ -26,18 +27,50 @@ This file is part of The Last Caturai.
 class Physics(pygame.sprite.Sprite):
 
     def __init__(self, position = (0,0)):
-        # position of particle (X, Y)
-        self.__position__ = position
+
         # speed component of the particle
-        self.__speed_vector__ = 0.
+        self.__x_speed_vector__ = 0.
         # movement angle of vector
-        self.__angle__ = 0.
+        self.__y_speed_vector__ = 0.
         # Fetch the rectangle object that has the dimensions of the image
         # Update the position of this object by setting the values of rect.x and rect.y
         self.rect = self.image.get_rect()
-        # Depending on the window size, the particles will
-        # have different limits
-        # self.__limits__
+        self.rect.x = position[0]
+        self.rect.y = position[1]
 
-        def collisions(self, group, destroy_ob):
-            pass
+    # Set the value of the speed vector
+    def change_x_speed_vector(self, speed):
+        self.__x_speed_vector_ = abs(speed)
+
+    # Set the angle of the movement in radians
+    def change_y_speed_vector(self, angle):
+        self.__y_speed_vector__ = abs(angle)
+
+    def move_right(self):
+        self.__position_x__ += self.__x_speed_vector__
+
+    def move_left(self):
+        self.__position_x__ -= self.__x_speed_vector__
+
+    def stop_moving(self):
+        self.change_x_speed_vector(0)
+        self.change_y_speed_vector(0)
+
+    def go_up(self):
+        self.__y_speed_vector__ -= self.__y_speed_vector__
+
+    def go_down(self):
+        self.__y_speed_vector__ += self.__y_speed_vector__
+
+    def gravity(self):
+        """ Calculate effect of gravity. """
+        if self.__position_y__ == 0:
+            self.__position_y__ = 1
+        else:
+            self.__position_y__ += .35
+
+        # See if we are on the ground.
+        if self.rect.y >= constants.SCREEN_HEIGHT - self.rect.height and self.__position_y__ >= 0:
+            self.__position_y__ = 0
+            self.rect.y = constants.SCREEN_HEIGHT - self.rect.height
+
