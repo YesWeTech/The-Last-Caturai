@@ -55,10 +55,10 @@ class Director:
 
                 if event.type == pygame.KEYDOWN:
                     if event.key == pygame.K_LEFT:
-                        self.main_character.go_left()
+                        self.main_character.move_left()
 
                     if event.key == pygame.K_RIGHT:
-                        self.main_character.change_x_speed_vector(100)
+                        # self.main_character.change_x_speed_vector(10)
                         self.main_character.move_right()
 
                     if event.key == pygame.K_UP:
@@ -66,12 +66,12 @@ class Director:
                         os.path.abspath("resources/audio/sounds/270323__littlerobotsoundfactory__jump-03.wav"))
                         jump_sound.play()
                         #self.main_character.jump()
-
-                if event.type == pygame.KEYUP:
-                    if event.key == pygame.K_LEFT and self.main_character.rect.x < 0:
-                        self.main_character.stop()
-                    if event.key == pygame.K_RIGHT and self.main_character.rect.x > 0:
-                        self.main_character.stop()
+                #
+                # if event.type == pygame.KEYUP:
+                #     if event.key == pygame.K_LEFT and self.main_character.rect.x < 0:
+                #         self.main_character.stop()
+                #     if event.key == pygame.K_RIGHT and self.main_character.rect.x > 0:
+                #         self.main_character.stop()
 
             # Event detection
             self.scene.on_event()
