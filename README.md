@@ -1,5 +1,14 @@
 # The-Last-Caturai
-Juego para la Granada Game Jam 2016
+Game developed for the ___Granada Game Jam 2016___.
+
+## History
+
+The history is about a samurai cat called Pepe. Once upon a time, Pepe was fishing by the river near his house and after 
+a long time waiting he finally fished an _evil carp_. He was very happy because of the dinner he was about to have that night 
+but in that moment, the _team rat_ band stole his carp and fade away.
+ 
+ Pepe became very sad but after a while, he realised that he had to recover his carp. So he swore revenge to the _team rat_ 
+ and left for an adventure! Will Pepe get back his _evil carp_? That depends on you! 
 
 ## Music
 
