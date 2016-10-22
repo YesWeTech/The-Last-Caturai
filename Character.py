@@ -1,6 +1,8 @@
 #! /usr/bin/env python
 # -*- coding: utf-8 -*-
 
+import pygame
+
 class Character:
     def __init__(self, hp, position, sprite):
         self.hp = hp
@@ -9,8 +11,8 @@ class Character:
 
     # Corta un chara en las fil y col indicadas. Array Bidimensional.
     # tomada de: http://razonartificial.com/2010/06/engine-xi-creando-al-heroe/
-    def cortar_chara(ruta, fil, col):
-        image = load_image(ruta, True)
+    def cortar_chara(self, ruta, fil, col):
+        image = self.load_image(ruta, True)
         rect = image.get_rect()
         w = rect.w / col
         h = rect.h / fil
@@ -30,12 +32,12 @@ class Character:
 
     # Carga una imagen transparencia y color tranasparente opcionales.
     # tomada de: http://razonartificial.com/2010/06/engine-xi-creando-al-heroe/
-    def load_image(filename, transparent=False, pixel=(0,0)):
+    def load_image(self, filename, transparent=False, pixel=(0,0)):
         try: image = pygame.image.load(filename)
-        except pygame.error, message:
-                raise SystemExit, message
+        except (pygame.error) as message:
+                raise (message)
         image = image.convert()
         if transparent:
                 color = image.get_at(pixel)
-                image.set_colorkey(color, RLEACCEL)
+                image.set_colorkey(color, pygame.RLEACCEL)
         return image
