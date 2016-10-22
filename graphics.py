@@ -24,6 +24,48 @@ This file is part of The Last Caturai.
 import pygame
 import config
 
+BLACK    = (   0,   0,   0)
+
+# Corta un chara en las fil y col indicadas. Array Bidimensional.
+# tomada de: http://razonartificial.com/2010/06/engine-xi-creando-al-heroe/
+def _cortar_chara(ruta, fil, col):
+    image = load_image(ruta, True)
+    rect = image.get_rect()
+    w = rect.w / col
+    h = rect.h / fil
+    sprite = range(fil)
+    for i in range(fil):
+        sprite[i] = list(range(col))
+
+    for f in range(fil):
+        for c in range(col):
+            sprite[f] = image.subsurface((rect.left, rect.top, w, h))
+            rect.left += w
+        rect.top += h
+        rect.left = 0
+
+    return sprite
+
+
+def get_image(file_name, x, y, width, height):
+    """ Grab a single image out of a larger spritesheet
+        Pass in the x, y location of the sprite
+        and the width and height of the sprite. """
+
+    sprite_sheet = pygame.image.load(file_name).convert()
+
+    # Create a new blank image
+    image = pygame.Surface([width, height]).convert()
+
+    # Copy the sprite from the large sheet onto the smaller image
+    image.blit(sprite_sheet, (0, 0), (x, y, width, height))
+
+    # Assuming black works as the transparent color
+    image.set_colorkey(BLACK)
+
+    # Return the image
+    return image
+
 # Function which loads an image into the Window
 def load_image(path, transparent):
     try: image = pygame.image.load(path)
@@ -34,7 +76,7 @@ def load_image(path, transparent):
     image = image.convert()
     if transparent:
         color = image.get_at((0, 0))
-        image.set_colorkey(color, RLEACCEL)
+        image.set_colorkey(color, pygame.RLEACCEL)
     return image
 
 # Function to manage texts
