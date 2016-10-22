@@ -59,7 +59,10 @@ class Director:
                     if event.key == pygame.K_RIGHT:
                         self.main_character.go_right()
                     if event.key == pygame.K_UP:
-                        self.main_character.jump()
+                        jump_sound = pygame.mixer.Sound(
+                        os.path.abspath("resources/audio/sounds/270323__littlerobotsoundfactory__jump-03.wav"))
+                        jump_sound.play()
+                        #self.main_character.jump()
 
                 if event.type == pygame.KEYUP:
                     if event.key == pygame.K_LEFT and MainCharacter.rect.x < 0:

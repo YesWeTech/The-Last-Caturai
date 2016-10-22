@@ -35,6 +35,8 @@ class SceneGame(scene.Scene):
     def __init__(self, director):
         scene.Scene.__init__(self, director)
         #self.back = graphics.load_image(config.backs+"temp_background.png", False)
+        pygame.mixer.music.load(os.path.abspath("resources/audio/music/Rosver_-_Atomic_Weight_8Bit.mp3"))
+        pygame.mixer.music.play(1)
         tmx_file = os.path.join(os.getcwd(), config.levels+'level1.tmx')
         tile_renderer = tilerender.Renderer(tmx_file)
         map_surface = tile_renderer.make_map()
