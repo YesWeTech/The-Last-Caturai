@@ -30,8 +30,8 @@ class Physics(pygame.sprite.Sprite):
 
         # speed component of the particle
         self.__x_speed_vector__ = 0.
-        # movement angle of vector
-        self.__y_speed_vector__ = 0.
+        # measures the change on X and Y
+        self.__position_y__, self.__position_x__ = 0, 0
         # Fetch the rectangle object that has the dimensions of the image
         # Update the position of this object by setting the values of rect.x and rect.y
         self.image = load_image(img_path, True)
@@ -57,14 +57,8 @@ class Physics(pygame.sprite.Sprite):
         self.change_x_speed_vector(0)
         self.change_y_speed_vector(0)
 
-    def go_up(self):
-        self.__y_speed_vector__ -= self.__y_speed_vector__
-
-    def go_down(self):
-        self.__y_speed_vector__ += self.__y_speed_vector__
-
     def gravity(self):
-        """ Calculate effect of gravity. """
+        # add gravity effect to the Y positon
         if self.__position_y__ == 0:
             self.__position_y__ = 1
         else:
