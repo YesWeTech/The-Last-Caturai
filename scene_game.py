@@ -58,7 +58,7 @@ class SceneGame(scene.Scene):
         self.enemy_list = pygame.sprite.Group()
         for i in range(5):
             self.enemy_list.add(Enemy(hp=10, position=(random.randrange(400,2000),config.GROUND_HEIGHT),
-                                      sprite=os.path.abspath(config.sprites + config.character_sprite)))
+                                      sprite=os.path.abspath(config.sprites + config.mouse_sprite)))
         self.player = director.main_character
 
     def on_update(self):
