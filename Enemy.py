@@ -36,7 +36,7 @@ class Enemy(Character):
         self.rect.y = position[1]
         self.direction = 'I'
         self.image = self.movimientos[self.direction][0]
-        self.shuriken = Shuriken(img_path=os.path.abspath(config.sprites + config.shuriken_sprite), position=(self.position[0]-15,self.position[1]-25))
+        self.shuriken = Shuriken(img_path=os.path.abspath(config.sprites + config.shuriken_sprite), position=(self.position[0]-25,self.position[1]-25))
 
     def _cortar_chara(self, fil):
         # La idea de esta función es devolver una tupla con cuatro vectores:
@@ -60,9 +60,7 @@ class Enemy(Character):
 
     def attack(self, player, screen):
         self.shuriken.draw(screen)
-        if not pygame.sprite.collide_rect(player, self.shuriken):
-            print(player.rect.x)
-            print(self.shuriken.rect.x)
+        if player.position[0] != self.shuriken.position[0]:
             self.shuriken.move_left()
             self.shuriken.update()
         else:

@@ -37,7 +37,7 @@ class Shuriken(Physics):
     def update(self):
         self.rect.x += self.x_speed_vector_
         aux = list(self.position)
-        aux[0] = self.rect.x
+        aux[0] = self.position[0] + self.x_speed_vector_
         self.position = aux
         self.rect.y += self.y_speed_vector_
 
