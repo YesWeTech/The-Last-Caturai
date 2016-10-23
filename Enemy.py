@@ -22,9 +22,10 @@ This file is part of The Last Caturai.
 
 """It defines the general enemies of the game."""
 
-import Character
+from Character import Character
+import pygame
 
-class Enemy(Character):
+class Enemy(Character, pygame.sprite.Sprite):
     def __init__(self, hp, position, sprite):
         super(Enemy, self).__init__(hp, position, sprite)
 
