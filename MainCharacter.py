@@ -33,12 +33,11 @@ class MainCharacter(Character):
         self.rect.y = position[1]
 
     def attack(self, group_enemies):
-        # passblocks_hit_list = pygame.sprite.spritecollide(self, group_enemies, False)
-        # print(passblocks_hit_list)
+        # detect when the main character is colliding with an enemy
+        # and reduce the hp of the enemy if the main character and
+        # the enemy are close enough
         range_constant = 30
         for hit in group_enemies:
-            print(self.rect, self.position)
-            print(hit.rect, hit.position)
             if (hit.position[0] >= self.position[0]-range_constant and hit.position[0] <= self.position[0]+range_constant)\
                     and (hit.position[1] >= self.position[1]-range_constant and hit.position[1] <= self.position[1]+range_constant):
                 hit.hp -= 3
