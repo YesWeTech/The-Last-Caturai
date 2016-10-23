@@ -40,6 +40,7 @@ class Physics(pygame.sprite.Sprite):
         # speed component of the particle
         self.x_speed_vector_ = 0
         self.y_speed_vector_ = 0
+        self.change_index = 0
         self.direction='D'
         self.index = 0
 
@@ -54,14 +55,17 @@ class Physics(pygame.sprite.Sprite):
     def move_right(self):
         self.direction='D'
         self.x_speed_vector_ = 5
+        self.change_index = 1
 
     def move_left(self):
         self.direction='I'
         self.x_speed_vector_ = -5
+        self.change_index = 1
 
     def stop_moving(self):
         self.x_speed_vector_ = 0
         self.y_speed_vector_ = 0
+        self.change_index = 0
 
     def gravity(self):
         # add gravity effect to the Y positon
@@ -77,10 +81,9 @@ class Physics(pygame.sprite.Sprite):
 
     def update(self):
         self.gravity()
-        self.index = (self.index + 1) % 3
         self.rect.x += self.x_speed_vector_
         self.rect.y += self.y_speed_vector_
-
+        self.index  = (self.index + self.change_index) % 3
         self.position = (self.rect.x, self.rect.y)
 
 
