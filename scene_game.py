@@ -71,7 +71,7 @@ class SceneGame(scene.Scene):
         # We don't shift the background as much as the sprites are shifted
         # to give a feeling of depth.
         screen.fill(config.back_colour)
-        screen.blit(self.background,(self.world_shift // 3,0))
+        screen.blit(pygame.transform.scale(self.background, (config.WIDTH, config.HEIGHT)),(self.world_shift // 3,0))
 
         # Draw all the sprite lists that we have
         self.platform_list.draw(screen)
