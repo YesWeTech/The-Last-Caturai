@@ -117,21 +117,24 @@ class Level_01(SceneGame):
         self.level_limit = -2500
 
         # Array with type of platform, and x, y location of the platform.
-        level = [ [platforms.STONE_PLATFORM_LEFT, 500, 500],
-                  [platforms.STONE_PLATFORM_MIDDLE, 570, 500],
-                  [platforms.STONE_PLATFORM_RIGHT, 640, 500],
-                  [platforms.STONE_PLATFORM_LEFT, 800, 400],
-                  [platforms.STONE_PLATFORM_MIDDLE, 870, 400],
-                  [platforms.STONE_PLATFORM_RIGHT, 940, 400],
-                  [platforms.STONE_PLATFORM_LEFT, 1000, 500],
-                  [platforms.STONE_PLATFORM_MIDDLE, 1070, 500],
-                  [platforms.STONE_PLATFORM_RIGHT, 1140, 500],
-                  [platforms.STONE_PLATFORM_LEFT, 1120, 280],
-                  [platforms.STONE_PLATFORM_MIDDLE, 1190, 280],
-                  [platforms.STONE_PLATFORM_RIGHT, 1260, 280],
-                  [platforms.STONE_PLATFORM_LEFT, 1680, 280],
-                  [platforms.STONE_PLATFORM_MIDDLE, 1750, 280],
-                  [platforms.STONE_PLATFORM_RIGHT, 1820, 280],
+        level = [ [platforms.STONE_PLATFORM_LEFT, 700, 500],
+                  [platforms.STONE_PLATFORM_MIDDLE, 770, 500],
+                  [platforms.STONE_PLATFORM_RIGHT, 840, 500],
+                  [platforms.STONE_PLATFORM_LEFT, 1000, 400],
+                  [platforms.STONE_PLATFORM_MIDDLE, 1070, 400],
+                  [platforms.STONE_PLATFORM_RIGHT, 1140, 400],
+                  [platforms.STONE_PLATFORM_LEFT, 1200, 500],
+                  [platforms.STONE_PLATFORM_MIDDLE, 1270, 500],
+                  [platforms.STONE_PLATFORM_RIGHT, 1340, 500],
+                  [platforms.STONE_PLATFORM_LEFT, 1320, 280],
+                  [platforms.STONE_PLATFORM_MIDDLE, 1390, 280],
+                  [platforms.STONE_PLATFORM_RIGHT, 1460, 280],
+                  [platforms.STONE_PLATFORM_LEFT, 1880, 280],
+                  [platforms.STONE_PLATFORM_MIDDLE, 1950, 280],
+                  [platforms.STONE_PLATFORM_RIGHT, 2020, 280],
+                  [platforms.STONE_PLATFORM_LEFT, 2090, 500],
+                  [platforms.STONE_PLATFORM_MIDDLE, 2160, 500],
+                  [platforms.STONE_PLATFORM_RIGHT, 2230, 500],
                   ]
 
 
@@ -145,10 +148,10 @@ class Level_01(SceneGame):
 
         # Add a custom moving platform
         block = platforms.MovingPlatform(platforms.STONE_PLATFORM_MIDDLE)
-        block.rect.x = 1350
+        block.rect.x = 1550
         block.rect.y = 280
-        block.boundary_left = 1350
-        block.boundary_right = 1600
+        block.boundary_left = 1550
+        block.boundary_right = 1800
         block.change_x = 1
         block.player = self.player
         block.level = self
