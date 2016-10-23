@@ -28,3 +28,4 @@ import pygame
 class Shuriken(Physics):
     def __init__(self, img_path, position):
         super(Shuriken, self).__init__(img_path=img_path, position=position)
+        self.direction = 'I'
