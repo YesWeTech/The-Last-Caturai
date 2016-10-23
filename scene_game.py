@@ -42,6 +42,9 @@ class SceneGame(scene.Scene):
     world_shift = 0
     level_limit = -1000
 
+    # distance when the enemy will start attacking
+    enemy_distance = 250
+
     def __init__(self, director):
         scene.Scene.__init__(self, director)
         #self.back = graphics.load_image(config.backs+"temp_background.png", False)
@@ -90,7 +93,8 @@ class SceneGame(scene.Scene):
         #screen.blit(timer_label, timer_label_rect)
         #Load main character
         for i in self.enemy_list.sprites():
-            i.attack(player=player, screen=screen)
+            if abs(player.position[0] - i.position[0]) < self.enemy_distance:
+                i.attack(player=player, screen=screen)
 
         player.draw(screen)
 

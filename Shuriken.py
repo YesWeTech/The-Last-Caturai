@@ -40,7 +40,3 @@ class Shuriken(Physics):
         aux[0] = self.position[0] + self.x_speed_vector_
         self.position = aux
         self.rect.y += self.y_speed_vector_
-
-        # self.index = ((self.rect.x + self.world_shift + self.change_index) // 30) % 3
-
-        # self.position = (self.rect.x, self.rect.y)
