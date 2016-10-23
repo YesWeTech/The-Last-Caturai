@@ -37,28 +37,28 @@ class Enemy(Character):
         self.rect.y = position[1]
         self.direction = 'I'
         self.attacking = False
-        self.image = self.movimientos[self.direction][0]
+        # self.image = self.movimientos[self.direction][0]
         self.damage_umbral = 5
         self.shuriken = Shuriken(img_path=os.path.abspath(config.sprites + config.shuriken_sprite), position=(self.position[0]-25,self.position[1]))
 
-    def _cortar_chara(self, fil):
-        # La idea de esta función es devolver una tupla con cuatro vectores:
-        #       * sprites de movimiento hacia la izquierda
-        #       * sprites de movimiento hacia la derecha
-        #       * sprites de movimiento hacia arriba
-        #       * sprites de movimiento hacia abajo
-        abajo = []
-        arriba = []
-        dcha = []
-        izq = []
-
-        for i in range(fil):
-            abajo.append(self.image.subsurface((i * 35, 0, 32, 32)))
-            izq.append(self.image.subsurface((i * 35, 35, 32, 32)))
-            dcha.append(self.image.subsurface((i * 35, 75, 32, 32)))
-            arriba.append(self.image.subsurface((i * 35, 105, 32, 32)))
-
-        return ({'A': abajo, 'U': arriba, 'D': dcha, 'I': izq})
+    # def _cortar_chara(self, fil):
+    #     # La idea de esta función es devolver una tupla con cuatro vectores:
+    #     #       * sprites de movimiento hacia la izquierda
+    #     #       * sprites de movimiento hacia la derecha
+    #     #       * sprites de movimiento hacia arriba
+    #     #       * sprites de movimiento hacia abajo
+    #     abajo = []
+    #     arriba = []
+    #     dcha = []
+    #     izq = []
+    #
+    #     for i in range(fil):
+    #         abajo.append(self.image.subsurface((i * 35, 0, 32, 32)))
+    #         izq.append(self.image.subsurface((i * 35, 35, 32, 32)))
+    #         dcha.append(self.image.subsurface((i * 35, 75, 32, 32)))
+    #         arriba.append(self.image.subsurface((i * 35, 105, 32, 32)))
+    #
+    #     return ({'A': abajo, 'U': arriba, 'D': dcha, 'I': izq})
 
 
     def attack(self, player, screen):
