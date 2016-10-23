@@ -22,11 +22,12 @@ This file is part of The Last Caturai.
 
 """It defines the general enemies of the game."""
 
-from Character import Character
-from Shuriken import Shuriken
+
 import os
 import config
 import pygame
+from Character import Character
+from Shuriken import Shuriken
 
 class Enemy(Character):
     def __init__(self, hp, position, sprite):
@@ -35,6 +36,7 @@ class Enemy(Character):
         self.rect.x = position[0]
         self.rect.y = position[1]
         self.direction = 'I'
+        self.attacking = False
         self.image = self.movimientos[self.direction][0]
         self.shuriken = Shuriken(img_path=os.path.abspath(config.sprites + config.shuriken_sprite), position=(self.position[0]-25,self.position[1]-25))
 
@@ -59,16 +61,30 @@ class Enemy(Character):
 
 
     def attack(self, player, screen):
+        self.attacking = True
         self.shuriken.draw(screen)
         if player.position[0] != self.shuriken.position[0] or player.position[1] != self.position[1]:
             self.shuriken.move_left()
             self.shuriken.update()
+            if self.shuriken.position[0] == 0:
+                self.shuriken.stop_moving()
+                pygame.sprite.Sprite.kill(self.shuriken)
+                self.shuriken = Shuriken(img_path=os.path.abspath(config.sprites + config.shuriken_sprite),
+                                         position=(self.position[0] - 25, self.position[1] - 25))
         else:
+            self.attacking = False
             self.shuriken.stop_moving()
             pygame.sprite.Sprite.kill(self.shuriken)
             self.shuriken = Shuriken(img_path=os.path.abspath(config.sprites + config.shuriken_sprite),
                                      position=(self.position[0] - 25, self.position[1] - 25))
+<<<<<<< HEAD
             player.hp -= 25
+=======
+            shuriken_sound = pygame.mixer.Sound(
+                os.path.abspath(config.sounds + config.shuriken_sound))
+            shuriken_sound.play()
+            player.hp -= 1
+>>>>>>> origin/master
 
     def movement(self):
         pass

@@ -28,7 +28,7 @@ import graphics
 import os
 from pygame.locals import *
 from Enemy import Enemy
-from Character import Character
+import random
 import platforms
 
 class SceneGame(scene.Scene):
@@ -53,7 +53,9 @@ class SceneGame(scene.Scene):
         self.background = graphics.load_image(config.backs+"level1_background.png", False)
         self.platform_list = pygame.sprite.Group()
         self.enemy_list = pygame.sprite.Group()
-        self.enemy_list.add(Enemy(hp=10, position=(400,config.GROUND_HEIGHT), sprite=os.path.abspath(config.sprites + config.character_sprite)))
+        for i in range(5):
+            self.enemy_list.add(Enemy(hp=10, position=(random.randrange(400,2000),config.GROUND_HEIGHT),
+                                      sprite=os.path.abspath(config.sprites + config.character_sprite)))
         self.player = director.main_character
 
     def on_update(self):
@@ -93,7 +95,7 @@ class SceneGame(scene.Scene):
         #screen.blit(timer_label, timer_label_rect)
         #Load main character
         for i in self.enemy_list.sprites():
-            if abs(player.position[0] - i.position[0]) < self.enemy_distance:
+            if abs(player.position[0] - i.position[0]) < self.enemy_distance or i.attacking:
                 i.attack(player=player, screen=screen)
 
         if player.hp >  0 :

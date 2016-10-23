@@ -88,6 +88,3 @@ class Physics(pygame.sprite.Sprite):
         self.index = ((self.rect.x + self.world_shift + self.change_index) // 30) % 3
 
         self.position = (self.rect.x, self.rect.y)
-
-
-

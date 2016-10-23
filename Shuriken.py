@@ -23,7 +23,6 @@ This file is part of The Last Caturai.
 """It defines the objects used by the enemies to attack."""
 
 from Physics import Physics
-import pygame
 
 class Shuriken(Physics):
     def __init__(self, img_path, position):
