@@ -32,12 +32,13 @@ from Shuriken import Shuriken
 class Enemy(Character):
     def __init__(self, hp, position, sprite):
         super(Enemy, self).__init__(hp, position, sprite)
-        self.movimientos = self._cortar_chara(fil=3)
+        self.movimientos = self._cortar_chara(fil=2)
         self.rect.x = position[0]
         self.rect.y = position[1]
         self.direction = 'I'
         self.attacking = False
         self.image = self.movimientos[self.direction][0]
+        self.damage_umbral = 5
         self.shuriken = Shuriken(img_path=os.path.abspath(config.sprites + config.shuriken_sprite), position=(self.position[0]-25,self.position[1]-25))
 
     def _cortar_chara(self, fil):
@@ -52,10 +53,10 @@ class Enemy(Character):
         izq = []
 
         for i in range(fil):
-            abajo.append(self.image.subsurface((i * 32, 0, 32, 32)))
-            izq.append(self.image.subsurface((i * 32, 32, 32, 32)))
-            dcha.append(self.image.subsurface((i * 32, 64, 32, 32)))
-            arriba.append(self.image.subsurface((i * 32, 96, 32, 32)))
+            abajo.append(self.image.subsurface((i * 35, 0, 32, 32)))
+            izq.append(self.image.subsurface((i * 35, 35, 32, 32)))
+            dcha.append(self.image.subsurface((i * 35, 75, 32, 32)))
+            arriba.append(self.image.subsurface((i * 35, 105, 32, 32)))
 
         return ({'A': abajo, 'U': arriba, 'D': dcha, 'I': izq})
 
@@ -63,7 +64,8 @@ class Enemy(Character):
     def attack(self, player, screen):
         self.attacking = True
         self.shuriken.draw(screen)
-        if player.position[0] != self.shuriken.position[0] or player.position[1] != self.position[1]:
+        diff = self.shuriken.position[0] - player.position[0]
+        if  diff != self.damage_umbral or player.position[1] != self.position[1]:
             self.shuriken.move_left()
             self.shuriken.update()
             if self.shuriken.position[0] == 0:

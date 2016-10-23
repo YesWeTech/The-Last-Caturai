@@ -51,6 +51,8 @@ class SceneGame(scene.Scene):
         # pygame.mixer.music.load(os.path.abspath("resources/audio/music/Rosver_-_Atomic_Weight_8Bit.mp3"))
         # pygame.mixer.music.play(1)
         self.background = graphics.load_image(config.backs+"level1_shorter_background.png", False)
+        self.game_over = graphics.load_image(config.backs+"game_over.png", False)
+        self.you_win = graphics.load_image(config.backs + "you_win.png", False)
         self.platform_list = pygame.sprite.Group()
         self.enemy_list = pygame.sprite.Group()
         for i in range(5):
@@ -70,36 +72,46 @@ class SceneGame(scene.Scene):
 
         for enemy in self.enemy_list:
             enemy.rect.x += shift_x
+            aux = list(enemy.shuriken.position)
+            aux[0] += shift_x
+            enemy.shuriken.position = aux
 
     def on_draw(self, screen, seconds, player):
         """ Draw everything on this level. """
+        if player == False:
+            screen.fill(config.back_colour)
+            screen.blit(self.game_over, (self.world_shift // 3, 0))
 
+        elif player == True:
+            screen.fill(config.back_colour)
+            screen.blit(self.you_win, (self.world_shift // 3, 0))
         # Draw the background
         # We don't shift the background as much as the sprites are shifted
         # to give a feeling of depth.
-        screen.fill(config.back_colour)
-        screen.blit(self.background, (self.world_shift // 3,0))
-        player.world_shift = self.world_shift
+        else:
+            screen.fill(config.back_colour)
+            screen.blit(self.background, (self.world_shift // 3,0))
+            player.world_shift = self.world_shift
         # Draw all the sprite lists that we have
-        self.platform_list.draw(screen)
-        self.enemy_list.draw(screen)
+            self.platform_list.draw(screen)
+            self.enemy_list.draw(screen)
 
-        infoScreen = pygame.display.Info()
+            infoScreen = pygame.display.Info()
 
         #Load timer
-        timer_label, timer_label_rect = graphics.text("Time: ", infoScreen.current_w - 200, 30, config.font_colour,
+            timer_label, timer_label_rect = graphics.text("Time: ", infoScreen.current_w - 200, 30, config.font_colour,
                                                       40)
-        timer, timer_rect = graphics.text("{00000000}".format(seconds), infoScreen.current_w-80, 30, config.font_colour, 40)
+            timer, timer_rect = graphics.text("{00000000}".format(seconds), infoScreen.current_w-80, 30, config.font_colour, 40)
         #screen.blit(pygame.transform.scale(self.back, (infoScreen.current_w, infoScreen.current_h)), (0,0))
         #screen.blit(timer, timer_rect)
         #screen.blit(timer_label, timer_label_rect)
         #Load main character
-        for i in self.enemy_list.sprites():
-            if abs(player.position[0] - i.position[0]) < self.enemy_distance or i.attacking:
-                i.attack(player=player, screen=screen)
+            for i in self.enemy_list.sprites():
+                if abs(player.position[0] - i.position[0]) < self.enemy_distance or i.attacking:
+                    i.attack(player=player, screen=screen)
 
-        if player.hp >  0 :
-            player.draw(screen)
+            if player.hp >  0 :
+                player.draw(screen)
 
     def on_resize(self, screen, event):
         screen = pygame.display.set_mode(event.dict['size'], HWSURFACE|DOUBLEBUF|RESIZABLE)
