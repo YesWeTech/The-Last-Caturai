@@ -138,5 +138,5 @@ class Level_01(SceneGame):
         block.boundary_right = 1600
         block.change_x = 1
         block.player = self.player
-        block.level = self
+        # block.level = self
         self.platform_list.add(block)
