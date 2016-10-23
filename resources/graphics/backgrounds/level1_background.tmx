@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="34" height="9" tilewidth="63" tileheight="63" nextobjectid="1">
+ <tileset firstgid="1" name="japanTileset" tilewidth="63" tileheight="63" tilecount="256" columns="16">
+  <image source="../../../../../Descargas/tiled-2016.05.25-linux64/japanTileset.png" trans="ffffff" width="1014" height="1021"/>
+ </tileset>
+ <layer name="Capa de Patrones 1" width="34" height="9">
+  <data encoding="base64" compression="zlib">
+   eJzFzrtyAVEYwPGdoYtbySKU7klNkBrJA8Tl3dYttXtNgifAE6AiFaqQ/5lRbHVkZ3bHN/Mrznc9mqIodTTQRAttfGKBJVbQTOiT1Troooc+BhhihDU22JrUJ6uNMcEXvjHFDHMccMTJpD5Zzex4gANOuOCGx4I7t8KPAIJ4RAjhO/wjjgSSSOEJzxbdSkvyGbwgixzyeP3HTi98Bqgo6OZU3S6RL6KEN7xjhz1+JLfEjgiiBsTwoZsTbxvs13wZFVRRwy/OuEhuiR1/Pxxe2g==
+  </data>
+ </layer>
+</map>

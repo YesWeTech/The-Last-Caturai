@@ -31,11 +31,11 @@ name = "The Last Caturai"
 
 # Colours
 font_colour = (0, 0, 0)
-back_colour = (255, 0, 0)
+back_colour = (160, 160, 160)
 
 # Default screen resolution - window sizs
 WIDTH = 800
-HEIGHT = 600
+HEIGHT = 567
 
 # Folder structure
 sprites = "resources/graphics/sprites/"
