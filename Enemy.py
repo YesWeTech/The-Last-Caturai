@@ -56,8 +56,9 @@ class Enemy(Character):
         return ({'A': abajo, 'U': arriba, 'D': dcha, 'I': izq})
 
 
-    def attack(self):
-        shuriken = Shuriken(img_path=os.path.abspath(config.sprites + config.shuriken_sprite), position=self.position)
+    def attack(self, screen):
+        shuriken = Shuriken(img_path=os.path.abspath(config.sprites + config.shuriken_sprite), position=(self.position[0]-15,self.position[1]-25))
+        shuriken.draw(screen)
         shuriken.move_left()
 
     def movement(self):
