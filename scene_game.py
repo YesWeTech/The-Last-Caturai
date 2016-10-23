@@ -27,6 +27,7 @@ import config
 import graphics
 import os
 from pygame.locals import *
+from Enemy import Enemy
 from Character import Character
 import platforms
 
@@ -49,6 +50,7 @@ class SceneGame(scene.Scene):
         self.background = graphics.load_image(config.backs+"level1_background.png", False)
         self.platform_list = pygame.sprite.Group()
         self.enemy_list = pygame.sprite.Group()
+        self.enemy_list.add(Enemy(hp=10, position=(400,config.HEIGHT - 100), sprite=os.path.abspath(config.sprites + config.character_sprite)))
         self.player = director.main_character
 
     def on_update(self):
@@ -72,7 +74,7 @@ class SceneGame(scene.Scene):
         # to give a feeling of depth.
         screen.fill(config.back_colour)
         screen.blit(self.background, (self.world_shift // 3,0))
-
+        player.world_shift = self.world_shift
         # Draw all the sprite lists that we have
         self.platform_list.draw(screen)
         self.enemy_list.draw(screen)
@@ -137,5 +139,5 @@ class Level_01(SceneGame):
         block.boundary_right = 1600
         block.change_x = 1
         block.player = self.player
-        block.level = self
+        # block.level = self
         self.platform_list.add(block)

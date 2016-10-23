@@ -22,11 +22,37 @@ This file is part of The Last Caturai.
 
 """It defines the general enemies of the game."""
 
-import Character
+from Character import Character
+import pygame
 
 class Enemy(Character):
     def __init__(self, hp, position, sprite):
         super(Enemy, self).__init__(hp, position, sprite)
+        self.movimientos = self._cortar_chara(fil=3)
+        self.rect.x = position[0]
+        self.rect.y = position[1]
+        self.image = self.movimientos[self.direction][0]
+        # yay
+
+    def _cortar_chara(self, fil):
+        # La idea de esta función es devolver una tupla con cuatro vectores:
+        #       * sprites de movimiento hacia la izquierda
+        #       * sprites de movimiento hacia la derecha
+        #       * sprites de movimiento hacia arriba
+        #       * sprites de movimiento hacia abajo
+        abajo = []
+        arriba = []
+        dcha = []
+        izq = []
+
+        for i in range(fil):
+            abajo.append(self.image.subsurface((i * 32, 0, 32, 32)))
+            izq.append(self.image.subsurface((i * 32, 32, 32, 32)))
+            dcha.append(self.image.subsurface((i * 32, 64, 32, 32)))
+            arriba.append(self.image.subsurface((i * 32, 96, 32, 32)))
+
+        return ({'A': abajo, 'U': arriba, 'D': dcha, 'I': izq})
+
 
     def attack(self):
         pass
