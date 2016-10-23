@@ -1,7 +1,6 @@
 import pygame
 from graphics import load_image
 from config import GROUND_HEIGHT
-import constants
 
 """Physics.py"""
 
@@ -25,8 +24,6 @@ This file is part of The Last Caturai.
 """Class that implement the physics of particles, such
     as characters, throwing weapons, etc."""
 
-import config
-
 class Physics(pygame.sprite.Sprite):
 
     def __init__(self, img_path, position):
@@ -45,6 +42,8 @@ class Physics(pygame.sprite.Sprite):
         self.change_index = 0
         self.direction='D'
         self.index = 0
+        self.velocity = 3
+        self.world_shift = 0
 
     # Set the value of the speed vector
     def change_x_speed_vector(self, speed):
@@ -56,12 +55,12 @@ class Physics(pygame.sprite.Sprite):
 
     def move_right(self):
         self.direction='D'
-        self.x_speed_vector_ = 5
+        self.x_speed_vector_ = self.velocity
         self.change_index = 1
 
     def move_left(self):
         self.direction='I'
-        self.x_speed_vector_ = -5
+        self.x_speed_vector_ = -self.velocity
         self.change_index = 1
 
     def stop_moving(self):
@@ -70,7 +69,6 @@ class Physics(pygame.sprite.Sprite):
         self.change_index = 0
 
     def gravity(self):
-
         if self.y_speed_vector_ < 0:
             self.y_speed_vector_ += 2
 
@@ -85,7 +83,9 @@ class Physics(pygame.sprite.Sprite):
 
         self.rect.x += self.x_speed_vector_
         self.rect.y += self.y_speed_vector_
-        self.index  = (self.index + self.change_index) % 3
+
+        self.index = ((self.rect.x + self.world_shift + self.change_index) // 30) % 3
+
         self.position = (self.rect.x, self.rect.y)
 
 

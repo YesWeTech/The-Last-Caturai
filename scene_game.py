@@ -74,7 +74,7 @@ class SceneGame(scene.Scene):
         # to give a feeling of depth.
         screen.fill(config.back_colour)
         screen.blit(self.background, (self.world_shift // 3,0))
-
+        player.world_shift = self.world_shift
         # Draw all the sprite lists that we have
         self.platform_list.draw(screen)
         self.enemy_list.draw(screen)
