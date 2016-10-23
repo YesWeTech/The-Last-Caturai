@@ -126,7 +126,7 @@ class Level_01(SceneGame):
         SceneGame.__init__(self, director)
 
         self.background = graphics.load_image(config.backs+"level1_shorter_background.png", False)
-        self.level_limit = -2500
+        self.level_limit = -1960
 
         # Array with type of platform, and x, y location of the platform.
         level = [ [platforms.STONE_PLATFORM_LEFT, 700, 500],

@@ -113,10 +113,11 @@ class Director:
 
                 # Draws scene
             seconds += self.time
+            position = self.main_character.rect.x + self.scene.world_shift
 
             if self.main_character.hp <= 0:
                 self.scene.on_draw(self.screen, seconds, False)
-            elif self.main_character.rect.x >= 2790:
+            elif position <= self.scene.level_limit:
                 self.scene.on_draw(self.screen, seconds, True)
             else:
                 self.scene.on_draw(self.screen, seconds, self.main_character)
