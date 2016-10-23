@@ -112,9 +112,12 @@ class Director:
 
                 # Draws scene
             seconds += self.time
+
+            self.scene.on_draw(self.screen, seconds, self.main_character)
+
             if self.main_character.hp > 0:
                 self.CreateHealthBar(self.main_character.hp, self.screen)
-            self.scene.on_draw(self.screen, seconds, self.main_character)
+
             pygame.display.flip()
 
     def change_scene(self, scene):
