@@ -48,11 +48,12 @@ class SceneGame(scene.Scene):
     def __init__(self, director):
         scene.Scene.__init__(self, director)
         #self.back = graphics.load_image(config.backs+"temp_background.png", False)
-        # pygame.mixer.music.load(os.path.abspath("resources/audio/music/Rosver_-_Atomic_Weight_8Bit.mp3"))
-        # pygame.mixer.music.play(1)
+        pygame.mixer.music.load(os.path.abspath("resources/audio/music/Rosver_-_Atomic_Weight_8Bit.mp3"))
+        pygame.mixer.music.play(1)
         self.background = graphics.load_image(config.backs+"level1_shorter_background.png", False)
         self.game_over = graphics.load_image(config.backs+"game_over.png", False)
-        self.you_win = graphics.load_image(config.backs + "you_win.png", False)
+        #self.you_win = graphics.load_image(config.backs + "you_win.png", False)
+        self.you_win = graphics.text(str("YOU WIN"), 350, 150, config.font_colour, 40)
         self.platform_list = pygame.sprite.Group()
         self.enemy_list = pygame.sprite.Group()
         for i in range(5):
@@ -84,7 +85,8 @@ class SceneGame(scene.Scene):
 
         elif player == True:
             screen.fill(config.back_colour)
-            screen.blit(self.you_win, (self.world_shift // 3, 0))
+            youwin, youwin_rect = graphics.text(str("YOU WIN"), 350, 250, config.font_colour, 100)
+            screen.blit(youwin, youwin_rect)
         # Draw the background
         # We don't shift the background as much as the sprites are shifted
         # to give a feeling of depth.
