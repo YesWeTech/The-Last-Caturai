@@ -1,4 +1,4 @@
-import pygame
+import pygame, scene_game
 from graphics import load_image
 from config import GROUND_HEIGHT
 
@@ -88,6 +88,3 @@ class Physics(pygame.sprite.Sprite):
         self.index = ((self.rect.x + self.world_shift + self.change_index) // 30) % 3
 
         self.position = (self.rect.x, self.rect.y)
-
-
-
