@@ -50,7 +50,7 @@ class SceneGame(scene.Scene):
         #self.back = graphics.load_image(config.backs+"temp_background.png", False)
         # pygame.mixer.music.load(os.path.abspath("resources/audio/music/Rosver_-_Atomic_Weight_8Bit.mp3"))
         # pygame.mixer.music.play(1)
-        self.background = graphics.load_image(config.backs+"level1_background.png", False)
+        self.background = graphics.load_image(config.backs+"level1_shorter_background.png", False)
         self.platform_list = pygame.sprite.Group()
         self.enemy_list = pygame.sprite.Group()
         for i in range(5):
@@ -113,7 +113,7 @@ class Level_01(SceneGame):
         # Call the parent constructor
         SceneGame.__init__(self, director)
 
-        self.background = graphics.load_image(config.backs+"level1_background.png", False)
+        self.background = graphics.load_image(config.backs+"level1_shorter_background.png", False)
         self.level_limit = -2500
 
         # Array with type of platform, and x, y location of the platform.
@@ -135,6 +135,32 @@ class Level_01(SceneGame):
                   [platforms.STONE_PLATFORM_LEFT, 2090, 500],
                   [platforms.STONE_PLATFORM_MIDDLE, 2160, 500],
                   [platforms.STONE_PLATFORM_RIGHT, 2230, 500],
+                  [platforms.EXIT, 2510, 497],
+                  [platforms.STONE_BLOCK, 2580, 497],
+                  [platforms.STONE_BLOCK, 2650, 497],
+                  [platforms.STONE_BLOCK, 2720, 497],
+                  [platforms.DOOR, 2790, 497],
+                  [platforms.STONE_BLOCK, 2860, 497],
+                  [platforms.STONE_BLOCK, 2930, 497],
+                  [platforms.STONE_BLOCK, 3000, 497],
+                  [platforms.STONE_BLOCK, 2580, 427],
+                  [platforms.STONE_BLOCK, 2650, 427],
+                  [platforms.STONE_BLOCK, 2720, 427],
+                  [platforms.STONE_BLOCK, 2790, 427],
+                  [platforms.STONE_BLOCK, 2860, 427],
+                  [platforms.STONE_BLOCK, 2930, 427],
+                  [platforms.STONE_BLOCK, 3000, 427],
+                  [platforms.STONE_BLOCK, 2580, 357],
+                  [platforms.STONE_BLOCK, 2650, 357],
+                  [platforms.STONE_BLOCK, 2720, 357],
+                  [platforms.STONE_BLOCK, 2790, 357],
+                  [platforms.STONE_BLOCK, 2860, 357],
+                  [platforms.STONE_BLOCK, 2930, 357],
+                  [platforms.STONE_BLOCK, 3000, 357],
+                  [platforms.STONE_PLATFORM_MIDDLE, 2580, 317],
+                  [platforms.STONE_PLATFORM_MIDDLE, 2720, 317],
+                  [platforms.STONE_PLATFORM_MIDDLE, 2860, 317],
+                  [platforms.STONE_PLATFORM_MIDDLE, 3000, 317],
                   ]
 
 

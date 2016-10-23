@@ -99,9 +99,9 @@ class Director:
             #self.scene.on_event()
 
             # If the player gets near the right side, shift the world left (-x)
-            if self.main_character.rect.x >= 500:
-                diff = self.main_character.rect.x - 500
-                self.main_character.rect.x = 500
+            if self.main_character.rect.x >= 400:
+                diff = self.main_character.rect.x - 400
+                self.main_character.rect.x = 400
                 self.scene.on_event(-diff)
 
             # If the player gets near the left side, shift the world right (+x)
