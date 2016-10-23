@@ -68,6 +68,9 @@ class Enemy(Character):
             pygame.sprite.Sprite.kill(self.shuriken)
             self.shuriken = Shuriken(img_path=os.path.abspath(config.sprites + config.shuriken_sprite),
                                      position=(self.position[0] - 25, self.position[1] - 25))
+            shuriken_sound = pygame.mixer.Sound(
+                os.path.abspath(config.sounds + config.shuriken_sound))
+            shuriken_sound.play()
             player.hp -= 1
 
     def movement(self):
