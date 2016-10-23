@@ -23,7 +23,9 @@ This file is part of The Last Caturai.
 """It defines the general enemies of the game."""
 
 from Character import Character
-import pygame
+from Shuriken import Shuriken
+import os
+import config
 
 class Enemy(Character):
     def __init__(self, hp, position, sprite):
@@ -55,7 +57,8 @@ class Enemy(Character):
 
 
     def attack(self):
-        pass
+        shuriken = Shuriken(img_path=os.path.abspath(config.sprites + config.shuriken_sprite), position=self.position)
+        shuriken.move_left()
 
     def movement(self):
         pass
