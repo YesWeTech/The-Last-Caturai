@@ -29,6 +29,18 @@ class Shuriken(Physics):
     def __init__(self, img_path, position):
         super(Shuriken, self).__init__(img_path=img_path, position=position)
         self.direction = 'I'
+        self.velocity = 1
 
     def draw(self, screen):
         screen.blit(self.image, self.position)
+
+    def update(self):
+        self.rect.x += self.x_speed_vector_
+        aux = list(self.position)
+        aux[0] = self.rect.x
+        self.position = aux
+        self.rect.y += self.y_speed_vector_
+
+        # self.index = ((self.rect.x + self.world_shift + self.change_index) // 30) % 3
+
+        # self.position = (self.rect.x, self.rect.y)
