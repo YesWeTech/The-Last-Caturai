@@ -28,6 +28,8 @@ import pygame
 class Enemy(Character):
     def __init__(self, hp, position, sprite):
         super(Enemy, self).__init__(hp, position, sprite)
+        self.rect.x = position[0]
+        self.rect.y = position[1]
 
     def attack(self):
         pass
