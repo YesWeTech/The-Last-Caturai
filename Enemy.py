@@ -36,6 +36,7 @@ class Enemy(Character):
         self.rect.x = position[0]
         self.rect.y = position[1]
         self.direction = 'I'
+        self.attacking = False
         self.image = self.movimientos[self.direction][0]
         self.shuriken = Shuriken(img_path=os.path.abspath(config.sprites + config.shuriken_sprite), position=(self.position[0]-25,self.position[1]-25))
 
@@ -60,6 +61,7 @@ class Enemy(Character):
 
 
     def attack(self, player, screen):
+        self.attacking = True
         self.shuriken.draw(screen)
         if player.position[0] != self.shuriken.position[0] or player.position[1] != self.position[1]:
             self.shuriken.move_left()
@@ -70,14 +72,17 @@ class Enemy(Character):
                 self.shuriken = Shuriken(img_path=os.path.abspath(config.sprites + config.shuriken_sprite),
                                          position=(self.position[0] - 25, self.position[1] - 25))
         else:
+            self.attacking = False
             self.shuriken.stop_moving()
             pygame.sprite.Sprite.kill(self.shuriken)
             self.shuriken = Shuriken(img_path=os.path.abspath(config.sprites + config.shuriken_sprite),
                                      position=(self.position[0] - 25, self.position[1] - 25))
+
+            player.hp -= 25
             shuriken_sound = pygame.mixer.Sound(
                 os.path.abspath(config.sounds + config.shuriken_sound))
             shuriken_sound.play()
-            player.hp -= 1
+
 
     def movement(self):
         pass
