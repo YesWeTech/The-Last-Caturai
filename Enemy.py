@@ -39,7 +39,7 @@ class Enemy(Character):
         self.attacking = False
         self.image = self.movimientos[self.direction][0]
         self.damage_umbral = 5
-        self.shuriken = Shuriken(img_path=os.path.abspath(config.sprites + config.shuriken_sprite), position=(self.position[0]-25,self.position[1]-25))
+        self.shuriken = Shuriken(img_path=os.path.abspath(config.sprites + config.shuriken_sprite), position=(self.position[0]-25,self.position[1]))
 
     def _cortar_chara(self, fil):
         # La idea de esta función es devolver una tupla con cuatro vectores:
@@ -72,13 +72,13 @@ class Enemy(Character):
                 self.shuriken.stop_moving()
                 pygame.sprite.Sprite.kill(self.shuriken)
                 self.shuriken = Shuriken(img_path=os.path.abspath(config.sprites + config.shuriken_sprite),
-                                         position=(self.position[0] - 25, self.position[1] - 25))
+                                         position=(self.position[0] - 25, self.position[1]))
         else:
             self.attacking = False
             self.shuriken.stop_moving()
             pygame.sprite.Sprite.kill(self.shuriken)
             self.shuriken = Shuriken(img_path=os.path.abspath(config.sprites + config.shuriken_sprite),
-                                     position=(self.position[0] - 25, self.position[1] - 25))
+                                     position=(self.position[0] - 25, self.position[1]))
 
             player.hp -= 25
             shuriken_sound = pygame.mixer.Sound(
