@@ -64,6 +64,11 @@ class Enemy(Character):
         if player.position[0] != self.shuriken.position[0] or player.position[1] != self.position[1]:
             self.shuriken.move_left()
             self.shuriken.update()
+            if self.shuriken.position[0] == 0:
+                self.shuriken.stop_moving()
+                pygame.sprite.Sprite.kill(self.shuriken)
+                self.shuriken = Shuriken(img_path=os.path.abspath(config.sprites + config.shuriken_sprite),
+                                         position=(self.position[0] - 25, self.position[1] - 25))
         else:
             self.shuriken.stop_moving()
             pygame.sprite.Sprite.kill(self.shuriken)
