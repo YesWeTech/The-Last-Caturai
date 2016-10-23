@@ -1,6 +1,8 @@
 # The-Last-Caturai
 Game developed for the ___Granada Game Jam 2016___.
 
+Arch Linux users will need to install `smpeg` package to run the program.
+
 ## History
 
 The history is about a samurai cat called Pepe. Once upon a time, Pepe was fishing by the river near his house and after 
