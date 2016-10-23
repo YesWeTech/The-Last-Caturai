@@ -70,6 +70,9 @@ class SceneGame(scene.Scene):
 
         for enemy in self.enemy_list:
             enemy.rect.x += shift_x
+            aux = list(enemy.shuriken.position)
+            aux[0] += shift_x
+            enemy.shuriken.position = aux
 
     def on_draw(self, screen, seconds, player):
         """ Draw everything on this level. """

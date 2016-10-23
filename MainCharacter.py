@@ -44,4 +44,3 @@ class MainCharacter(Character):
                 print(hit.hp)
                 if hit.hp <= 0:
                     pygame.sprite.Sprite.kill(hit)
-
