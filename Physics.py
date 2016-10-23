@@ -40,6 +40,7 @@ class Physics(pygame.sprite.Sprite):
         # speed component of the particle
         self.x_speed_vector_ = 0
         self.y_speed_vector_ = 0
+        self.direction='I'
 
     # Set the value of the speed vector
     def change_x_speed_vector(self, speed):
@@ -50,9 +51,11 @@ class Physics(pygame.sprite.Sprite):
         self.y_speed_vector__ = abs(angle)
 
     def move_right(self):
+        self.direction='D'
         self.x_speed_vector_ = 10
 
     def move_left(self):
+        self.direction='I'
         self.x_speed_vector_ = -10
 
     def stop_moving(self):
@@ -72,7 +75,7 @@ class Physics(pygame.sprite.Sprite):
             self.rect.y = config.HEIGHT - self.rect.height
 
     def update(self):
-        #self.gravity()
+        self.gravity()
 
         self.rect.x += self.x_speed_vector_
         self.rect.y += self.y_speed_vector_

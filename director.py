@@ -43,6 +43,7 @@ class Director:
         """Starts the game"""
 
         seconds = 0
+        index = 0
 
         while not self.quit_flag:
             self.time = self.clock.tick(60)
@@ -52,6 +53,7 @@ class Director:
                     self.quit()
 
                 elif event.type == pygame.KEYDOWN :
+                    index = (index + 1) % 3
                     if event.key == pygame.K_LEFT or pygame.key.get_pressed()[pygame.K_LEFT]:
                         self.main_character.move_left()
 
@@ -93,7 +95,7 @@ class Director:
 
             # Draws scene
             seconds += self.time
-            self.scene.on_draw(self.screen, seconds, self.main_character)
+            self.scene.on_draw(self.screen, seconds, self.main_character, index)
             pygame.display.flip()
 
     def change_scene(self, scene):

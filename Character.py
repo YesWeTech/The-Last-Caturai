@@ -31,7 +31,8 @@ class Character(Physics):
         super(Character, self).__init__(img_path=sprite, position = position)
         self.hp = hp
         self.rect = self.image.get_rect()
-        self.abajo, self.arriba, self.dcha, self.izq = self._cortar_chara(fil=3)
+        # self.abajo, self.arriba, self.dcha, self.izq = self._cortar_chara(fil=3)
+        self.movimientos = self._cortar_chara(fil=3)
 
     # Corta un chara en las fil y col indicadas.
     def _cortar_chara(self, fil):
@@ -46,15 +47,15 @@ class Character(Physics):
         izq = [0]*fil
 
         for i in range(fil):
-            abajo[i]  = (0,  i*32, 32, 32)
-            izq[i]    = (32, i*32, 32, 32)
-            dcha[i]   = (64, i*32, 32, 32)
-            arriba[i] = (96, i*32, 32, 32)
+            abajo[i]  = (i*32, 0, 32, 32)
+            izq[i]    = (i*32, 32, 32, 32)
+            dcha[i]   = (i*32, 64, 32, 32)
+            arriba[i] = (i*32, 96, 32, 32)
 
-        return (abajo, arriba, dcha, izq)
+        return ({'A':abajo, 'U':arriba, 'D':dcha, 'I':izq})
 
-    def draw(self, screen):
-        screen.blit(self.image, self.position, self.abajo[0])
+    def draw(self, screen, index=0):
+        screen.blit(self.image, self.position, self.movimientos[self.direction][index])
 
     def attack(self):
         raise NotImplemented("Implement the atack in MainCharacter and Enemy")
