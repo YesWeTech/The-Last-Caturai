@@ -21,7 +21,7 @@ This file is part of The Last Caturai.
 """
 
 """Defines the main character of the game"""
-
+import pygame
 from Character import Character
 
 class MainCharacter(Character):
@@ -32,5 +32,12 @@ class MainCharacter(Character):
         self.rect.x = position[0]
         self.rect.y = position[1]
 
-    def attack(self):
-        pass
+    def attack(self, group_enemies):
+        passblocks_hit_list = pygame.sprite.spritecollide(self, group_enemies, False)
+
+        for hit in passblocks_hit_list:
+            hit.hp -= 3
+            print(hit.hp)
+            if hit.hp <= 0:
+                pygame.sprite.Sprite.kill(hit)
+

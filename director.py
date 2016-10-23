@@ -64,6 +64,11 @@ class Director:
                         jump_sound.play()
                         self.main_character.jump()
 
+                    if event.key == pygame.K_RCTRL:
+                        self.main_character.attack(self.scene.enemy_list)
+
+
+
                 elif event.type == pygame.KEYUP:
                     if event.key == pygame.K_LEFT and self.main_character.x_speed_vector_ < 0:
                         self.main_character.stop_moving()

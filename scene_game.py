@@ -83,14 +83,16 @@ class SceneGame(scene.Scene):
 
         #Load timer
         timer_label, timer_label_rect = graphics.text("Time: ", infoScreen.current_w - 200, 30, config.font_colour,
-                                          40)
+                                                      40)
         timer, timer_rect = graphics.text("{00000000}".format(seconds), infoScreen.current_w-80, 30, config.font_colour, 40)
         #screen.blit(pygame.transform.scale(self.back, (infoScreen.current_w, infoScreen.current_h)), (0,0))
         #screen.blit(timer, timer_rect)
         #screen.blit(timer_label, timer_label_rect)
 
+        for i in self.enemy_list.sprites():
+            i.attack(screen)
         #Load main character
-        self.enemy_list.sprites()[0].attack(screen)
+        # self.enemy_list.sprites()[0].attack()
         player.draw(screen)
 
     def on_resize(self, screen, event):
