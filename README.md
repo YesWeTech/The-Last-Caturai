@@ -43,3 +43,7 @@ The sound effects used for this game have a Creave Commons Licence.
 * [Hit](https://www.freesound.org/people/LittleRobotSoundFactory/sounds/270325/)
 
 * [Shoot](https://www.freesound.org/people/LittleRobotSoundFactory/sounds/270344/)
+
+## Shuriken Sprite
+
+The shuriken sprite has been downloaded from [this page](http://opengameart.org/content/block-ninja-2d-sprites)
