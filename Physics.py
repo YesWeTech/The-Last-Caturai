@@ -75,7 +75,7 @@ class Physics(pygame.sprite.Sprite):
             self.y_speed_vector_ += 2
 
         else:
-            self.y_speed_vector_ += 1
+            self.y_speed_vector_ += 2
             if self.position[1] >= GROUND_HEIGHT:
                 self.y_speed_vector_ = 0
                 self.on_ground = True
