@@ -1,5 +1,6 @@
-import math, pygame
+import pygame
 from graphics import load_image
+from config import GROUND_HEIGHT
 import constants
 
 """Physics.py"""
@@ -40,6 +41,7 @@ class Physics(pygame.sprite.Sprite):
         # speed component of the particle
         self.x_speed_vector_ = 0
         self.y_speed_vector_ = 0
+        self.on_ground = True
         self.direction='D'
         self.index = 0
 
@@ -49,7 +51,7 @@ class Physics(pygame.sprite.Sprite):
 
     # Set the angle of the movement in radians
     def change_y_speed_vector(self, angle):
-        self.y_speed_vector__ = abs(angle)
+        self.y_speed_vector_ = angle
 
     def move_right(self):
         self.direction='D'
@@ -72,6 +74,7 @@ class Physics(pygame.sprite.Sprite):
             self.y_speed_vector_ += 1
             if self.position[1] >= GROUND_HEIGHT:
                 self.y_speed_vector_ = 0
+                self.on_ground = True
 
     def update(self):
         self.gravity()

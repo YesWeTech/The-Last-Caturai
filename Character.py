@@ -64,7 +64,9 @@ class Character(Physics):
         raise NotImplemented("Implement the atack in MainCharacter and Enemy")
 
     def jump(self):
-        self.change_y_speed_vector(-10)
+        if self.on_ground:
+            self.change_y_speed_vector(-20)
+            self.on_ground=False
         # self.rect.y += 2
         # platform_hit_list = pygame.sprite.spritecollide(self, self.level.platform_list, False)
         # self.rect.y -= 2
