@@ -53,10 +53,6 @@ class Enemy(Character):
         izq = []
 
         for i in range(fil):
-            abajo.append(self.image.subsurface((i * 32, 0, 32, 37)))
-            izq.append(self.image.subsurface((i * 32, 32, 32, 37)))
-            dcha.append(self.image.subsurface((i * 32, 64, 32, 37)))
-            arriba.append(self.image.subsurface((i * 32, 96, 32, 37)))
 
         return ({'A': abajo, 'U': arriba, 'D': dcha, 'I': izq})
 
