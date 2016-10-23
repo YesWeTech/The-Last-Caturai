@@ -25,6 +25,7 @@ import pygame
 import os
 import config
 from MainCharacter import MainCharacter
+import graphics
 from pygame.locals import *
 import scene_game
 
@@ -48,7 +49,7 @@ class Director:
         else:
             character_health_color = (255,   0,   0) #RED
 
-        pygame.draw.rect(screen, character_health_color, (10, 10, health, 25))
+        pygame.draw.rect(screen, character_health_color, (45, 10, health, 25))
         pygame.display.update()
 
     def loop(self):
@@ -116,6 +117,8 @@ class Director:
             self.scene.on_draw(self.screen, seconds, self.main_character)
 
             if self.main_character.hp > 0:
+                timer_label, timer_label_rect = graphics.text("HP ", 30, 20, config.font_colour,40)
+                self.screen.blit(timer_label, timer_label_rect)
                 self.CreateHealthBar(self.main_character.hp, self.screen)
 
             pygame.display.flip()
