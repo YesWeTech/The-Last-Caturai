@@ -1,5 +1,6 @@
-import math, pygame
+import pygame
 from graphics import load_image
+from config import GROUND_HEIGHT
 import constants
 
 """Physics.py"""
@@ -47,7 +48,7 @@ class Physics(pygame.sprite.Sprite):
 
     # Set the angle of the movement in radians
     def change_y_speed_vector(self, angle):
-        self.y_speed_vector__ = abs(angle)
+        self.y_speed_vector_ = angle
 
     def move_right(self):
         self.x_speed_vector_ = 10
@@ -60,19 +61,17 @@ class Physics(pygame.sprite.Sprite):
         self.y_speed_vector_ = 0
 
     def gravity(self):
-        # add gravity effect to the Y positon
-        if self.__position_y__ == 0:
-            self.__position_y__ = 1
-        else:
-            self.__position_y__ += .35
+        print(self.y_speed_vector_)
+        if self.y_speed_vector_ < 0:
+            self.y_speed_vector_ += 2
 
-        # See if we are on the ground.
-        if self.rect.y >= config.HEIGHT - self.rect.height and self.__position_y__ >= 0:
-            self.__position_y__ = 0
-            self.rect.y = config.HEIGHT - self.rect.height
+        else:
+            self.y_speed_vector_ += 1
+            if self.position[1] >= GROUND_HEIGHT:
+                self.y_speed_vector_ = 0
 
     def update(self):
-        #self.gravity()
+        self.gravity()
 
         self.rect.x += self.x_speed_vector_
         self.rect.y += self.y_speed_vector_

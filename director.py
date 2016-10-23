@@ -62,7 +62,7 @@ class Director:
                         jump_sound = pygame.mixer.Sound(
                         os.path.abspath(config.sounds+config.jump_sound))
                         jump_sound.play()
-                        #self.main_character.jump()
+                        self.main_character.jump()
 
                 elif event.type == pygame.KEYUP:
                     if event.key == pygame.K_LEFT and self.main_character.x_speed_vector_ < 0:
