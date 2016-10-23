@@ -116,7 +116,7 @@ class Director:
 
             if self.main_character.hp <= 0:
                 self.scene.on_draw(self.screen, seconds, False)
-            elif self.main_character.rect.x >= 2142:
+            elif self.main_character.rect.x >= 2790:
                 self.scene.on_draw(self.screen, seconds, True)
             else:
                 self.scene.on_draw(self.screen, seconds, self.main_character)
