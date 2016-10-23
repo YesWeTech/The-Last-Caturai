@@ -31,6 +31,7 @@ class Enemy(Character):
         self.movimientos = self._cortar_chara(fil=3)
         self.rect.x = position[0]
         self.rect.y = position[1]
+        self.image = self.movimientos[self.direction][0]
 
     def _cortar_chara(self, fil):
         # La idea de esta función es devolver una tupla con cuatro vectores:
