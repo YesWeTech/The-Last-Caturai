@@ -70,7 +70,7 @@ class Physics(pygame.sprite.Sprite):
         self.change_index = 0
 
     def gravity(self):
-        print(self.y_speed_vector_)
+
         if self.y_speed_vector_ < 0:
             self.y_speed_vector_ += 2
 
