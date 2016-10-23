@@ -70,10 +70,10 @@ class Physics(pygame.sprite.Sprite):
 
     def gravity(self):
         if self.y_speed_vector_ < 0:
-            self.y_speed_vector_ += 2
+            self.y_speed_vector_ += 1
 
         else:
-            self.y_speed_vector_ += 2
+            self.y_speed_vector_ += 1
             if self.rect.y >= GROUND_HEIGHT:
                 self.y_speed_vector_ = 0
                 self.on_ground = True
