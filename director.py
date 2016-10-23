@@ -52,6 +52,7 @@ class Director:
                 if event.type == pygame.QUIT:
                     self.quit()
                 elif event.type == pygame.KEYDOWN:
+                    print(event.key)
                     if event.key == pygame.K_LEFT or pygame.key.get_pressed()[pygame.K_LEFT]:
                         self.main_character.move_left()
 
@@ -63,6 +64,11 @@ class Director:
                             os.path.abspath(config.sounds+config.jump_sound))
                         jump_sound.play()
                         self.main_character.jump()
+
+                    if event.key == pygame.K_RCTRL:
+                        self.main_character.attack(self.scene.enemy_list)
+
+
 
                 elif event.type == pygame.KEYUP:
                     if event.key == pygame.K_LEFT and self.main_character.x_speed_vector_ < 0:
