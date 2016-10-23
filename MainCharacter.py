@@ -36,6 +36,7 @@ class MainCharacter(Character):
         # detect when the main character is colliding with an enemy
         # and reduce the hp of the enemy if the main character and
         # the enemy are close enough
+        self.direction = 'A'
         range_constant = 30
         for hit in group_enemies:
             if (hit.position[0] >= self.position[0]-range_constant and hit.position[0] <= self.position[0]+range_constant)\
