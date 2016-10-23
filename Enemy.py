@@ -68,7 +68,7 @@ class Enemy(Character):
             pygame.sprite.Sprite.kill(self.shuriken)
             self.shuriken = Shuriken(img_path=os.path.abspath(config.sprites + config.shuriken_sprite),
                                      position=(self.position[0] - 25, self.position[1] - 25))
-            player.hp -= 1
+            player.hp -= 25
 
     def movement(self):
         pass

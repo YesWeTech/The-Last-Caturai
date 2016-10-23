@@ -96,7 +96,8 @@ class SceneGame(scene.Scene):
             if abs(player.position[0] - i.position[0]) < self.enemy_distance:
                 i.attack(player=player, screen=screen)
 
-        player.draw(screen)
+        if player.hp >  0 :
+            player.draw(screen)
 
     def on_resize(self, screen, event):
         screen = pygame.display.set_mode(event.dict['size'], HWSURFACE|DOUBLEBUF|RESIZABLE)

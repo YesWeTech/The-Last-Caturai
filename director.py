@@ -37,7 +37,19 @@ class Director:
         self.scene = None
         self.quit_flag = False
         self.clock = pygame.time.Clock()
-        self.main_character = MainCharacter(hp=10, position=(100,config.GROUND_HEIGHT), sprite=os.path.abspath(config.sprites + config.character_sprite),is_girl=True)
+        self.main_character = MainCharacter(hp=100, position=(100,config.GROUND_HEIGHT), sprite=os.path.abspath(config.sprites + config.character_sprite),is_girl=True)
+        #self.CreateHealthBar(self.main_character.hp, self.screen)
+
+    def CreateHealthBar(self, health, screen):
+        if health > 75:
+            character_health_color = (  0, 255,   0) #GREEN
+        elif health > 50:
+            character_health_color = (255, 255,   0) #YELLOW
+        else:
+            character_health_color = (255,   0,   0) #RED
+
+        pygame.draw.rect(screen, character_health_color, (10, 10, health, 25))
+        pygame.display.update()
 
     def loop(self):
         """Starts the game"""
@@ -77,6 +89,7 @@ class Director:
 
             self.main_character.update()
 
+
             # Scene update
             self.scene.on_update()
             pygame.display.update()
@@ -98,6 +111,8 @@ class Director:
 
                 # Draws scene
             seconds += self.time
+            if self.main_character.hp > 0:
+                self.CreateHealthBar(self.main_character.hp, self.screen)
             self.scene.on_draw(self.screen, seconds, self.main_character)
             pygame.display.flip()
 
