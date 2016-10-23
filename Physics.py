@@ -72,7 +72,7 @@ class Physics(pygame.sprite.Sprite):
             self.rect.y = config.HEIGHT - self.rect.height
 
     def update(self):
-        self.gravity()
+        #self.gravity()
 
         self.rect.x += self.x_speed_vector_
         self.rect.y += self.y_speed_vector_
