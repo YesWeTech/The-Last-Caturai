@@ -25,7 +25,7 @@ import pygame
 import tile
 
 GRASS_UP = (196, 196, 196, 196)
-GRASS_DOWN = (196, 588, 196 196)
+GRASS_DOWN = (196, 588, 196, 196)
 STONE_UP = (392, 196, 196, 196)
 STONE_DOWN = (0, 196, 196, 196)
 

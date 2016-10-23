@@ -28,39 +28,113 @@ import graphics
 import os
 from pygame.locals import *
 from Character import Character
-from map import *
+import platform
 
 class SceneGame(scene.Scene):
 
+    platform_list = None
+    enemy_list = None
+
+    background = None
+
+    # How far this world has been scrolled left/right
+    world_shift = 0
+    level_limit = -1000
+
     def __init__(self, director):
         scene.Scene.__init__(self, director)
-        self.back = graphics.load_image(config.backs+"temp_background.png", False)
+        #self.back = graphics.load_image(config.backs+"temp_background.png", False)
         # pygame.mixer.music.load(os.path.abspath("resources/audio/music/Rosver_-_Atomic_Weight_8Bit.mp3"))
         # pygame.mixer.music.play(1)
-        # self.back = Map("level1.tmx")
-        #self.back = self.back.create_map()
+        self.background = graphics.load_image(config.backs+"temp_background.png", False)
+        self.platform_list = pygame.sprite.Group()
+        self.enemy_list = pygame.sprite.Group()
+        self.player = director.main_character
 
     def on_update(self):
-        pass
+        self.platform_list.update()
+        self.enemy_list.update()
 
-    def on_event(self):
-        pass
+    def on_event(self, shift_x):
+        self.world_shift += shift_x
 
-    def on_draw(self, screen, seconds, main_character):
+        for platform in self.platform_list:
+            platform.rect.x += shift_x
+
+        for enemy in self.enemy_list:
+            enemy.rect.x += shift_x
+
+    def on_draw(self, screen, seconds, player):
+        """ Draw everything on this level. """
+
+        # Draw the background
+        # We don't shift the background as much as the sprites are shifted
+        # to give a feeling of depth.
+        screen.fill(config.back_colour)
+        screen.blit(self.background,(self.world_shift // 3,0))
+
+        # Draw all the sprite lists that we have
+        self.platform_list.draw(screen)
+        self.enemy_list.draw(screen)
+
         infoScreen = pygame.display.Info()
-        font_color = (0, 0, 0)
 
         #Load timer
-        timer_label, timer_label_rect = graphics.text("Time: ", infoScreen.current_w - 200, 30, font_color,
+        timer_label, timer_label_rect = graphics.text("Time: ", infoScreen.current_w - 200, 30, config.font_colour,
                                           40)
-        timer, timer_rect = graphics.text("{00000000}".format(seconds), infoScreen.current_w-80, 30, font_color, 40)
-        screen.blit(pygame.transform.scale(self.back, (infoScreen.current_w, infoScreen.current_h)), (0,0))
+        timer, timer_rect = graphics.text("{00000000}".format(seconds), infoScreen.current_w-80, 30, config.font_colour, 40)
+        #screen.blit(pygame.transform.scale(self.back, (infoScreen.current_w, infoScreen.current_h)), (0,0))
         screen.blit(timer, timer_rect)
         screen.blit(timer_label, timer_label_rect)
 
         #Load main character
-        main_character.draw(screen)
+        player.draw(screen)
 
     def on_resize(self, screen, event):
         screen = pygame.display.set_mode(event.dict['size'], HWSURFACE|DOUBLEBUF|RESIZABLE)
         screen.blit(pygame.transform.scale(self.back, event.dict['size']), (0,0))
+
+# Create platforms for the level
+class Level_01(SceneGame):
+    """ Definition for level 1. """
+
+    def __init__(self, director):
+        """ Create level 1. """
+
+        # Call the parent constructor
+        SceneGame.__init__(self, director)
+
+        self.background = graphics.load_image(config.backs+"temp_background.png", False)
+        self.level_limit = -2500
+
+        # Array with type of platform, and x, y location of the platform.
+        level = [ [platforms.GRASS_UP, 500, 500],
+                  [platforms.GRASS_DOWN, 570, 500],
+                  [platforms.GRASS_UP, 640, 500],
+                  [platforms.GRASS_DOWN, 800, 400],
+                  [platforms.GRASS_DOWN, 870, 400],
+                  [platforms.GRASS_DOWN, 940, 400],
+                  [platforms.STONE_PLATFORM_UP, 1120, 280],
+                  [platforms.STONE_PLATFORM_DOWN, 1190, 280],
+                  [platforms.STONE_PLATFORM_DOWN, 1260, 280],
+                  ]
+
+
+        # Go through the array above and add platforms
+        for platform in level:
+            block = platforms.Platform(platform[0])
+            block.rect.x = platform[1]
+            block.rect.y = platform[2]
+            block.player = self.player
+            self.platform_list.add(block)
+
+        # Add a custom moving platform
+        block = platforms.MovingPlatform(platforms.STONE_PLATFORM_UP)
+        block.rect.x = 1350
+        block.rect.y = 280
+        block.boundary_left = 1350
+        block.boundary_right = 1600
+        block.change_x = 1
+        block.player = self.player
+        block.level = self
+        self.platform_list.add(block)

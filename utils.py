@@ -27,15 +27,15 @@ import zlib
 # Function that obtains a decoded and decompressed chain of characters on base64
 def decode(codedChar):
     # Decoding from base64
-    decodedChar = base64.decodestring(codedChar)
+    decodedChar = base64.b64decode(codedChar)
 
     # Descompressing from zLib.
     finalChar = zlib.decompress(decodedChar)
 
     output = []
-    for idx in xrange(0, len(finalChar), 4):
-        val = ord(str(finalChar[idx])) | (ord(str(finalChar[idx + 1])) << 8) | \
-        (ord(str(finalChar[idx + 2])) << 16) | (ord(str(finalChar[idx + 3])) << 24)
+    for idx in range(0, len(finalChar), 4):
+        val = ord(chr(finalChar[idx])) | (ord(chr(finalChar[idx + 1])) << 8) | \
+        (ord(chr(finalChar[idx + 2])) << 16) | (ord(chr(finalChar[idx + 3])) << 24)
         output.append(val)
 
     return output

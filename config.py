@@ -29,6 +29,10 @@ import sys
 # Nombre del juego
 name = "The Last Caturai"
 
+# Colours
+font_colour = (0, 0, 0)
+back_colour = (255, 0, 0)
+
 # Default screen resolution - window sizs
 WIDTH = 800
 HEIGHT = 600

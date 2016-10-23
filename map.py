@@ -19,7 +19,7 @@ This file is part of The Last Caturai.
     along with Foobar.  If not, see <http://www.gnu.org/licenses/>.
 """
 
-"""Reads and processes the TMX file, which is an XML."""
+"""Builds the levels."""
 
 from xml.dom import minidom, Node
 from utils import *

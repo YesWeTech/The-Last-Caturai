@@ -48,11 +48,11 @@ def text(text, posx, posy, color, size):
     return output, output_rect
 
 # Function that selects a tileset and stores it inside an array
-def select_tileset(path, width, height):
+def select_tileset(path, size):
     image = load_image(path, True)
     rect = image.get_rect()
-    col = rect.width / width
-    fil = rect.height / height
+    col = rect.width / size[0]
+    fil = rect.height / size[1]
     sprite = [None]
 
     for f in range(fil):

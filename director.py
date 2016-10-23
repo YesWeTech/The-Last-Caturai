@@ -26,6 +26,7 @@ import os
 import config
 from MainCharacter import MainCharacter
 from pygame.locals import *
+import scene_game
 
 class Director:
 
@@ -73,11 +74,23 @@ class Director:
                 #     if event.key == pygame.K_RIGHT and self.main_character.rect.x > 0:
                 #         self.main_character.stop()
 
-            # Event detection
-            self.scene.on_event()
-
             # Scene update
             self.scene.on_update()
+
+            # Event detection
+            #self.scene.on_event()
+
+            # If the player gets near the right side, shift the world left (-x)
+            if self.main_character.rect.x >= 500:
+                diff = self.main_character.rect.x - 500
+                self.main_character.rect.x = 500
+                self.scene.on_event(-diff)
+
+            # If the player gets near the left side, shift the world right (+x)
+            if self.main_character.rect.x <= 120:
+                diff = 120 - self.main_character.rect.x
+                self.main_character.rect.x = 120
+                self.scene.on_event(diff)           
 
             # Draws scene
             seconds += self.time
