@@ -60,7 +60,7 @@ class Enemy(Character):
 
     def attack(self, player, screen):
         self.shuriken.draw(screen)
-        if player.position[0] != self.shuriken.position[0]:
+        if player.position != self.shuriken.position:
             self.shuriken.move_left()
             self.shuriken.update()
         else:
