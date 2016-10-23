@@ -32,7 +32,7 @@ class Character(Physics):
         self.hp = hp
         self.rect = self.image.get_rect()
         # self.abajo, self.arriba, self.dcha, self.izq = self._cortar_chara(fil=3)
-        self.movimientos = self._cortar_chara(fil=3)
+        self.movimientos = self._cortar_chara(fil=2)
 
     # Corta un chara en las fil y col indicadas.
     def _cortar_chara(self, fil):
@@ -47,10 +47,10 @@ class Character(Physics):
         izq = [0]*fil
 
         for i in range(fil):
-            abajo[i]  = (i*32, 0, 32, 32)
-            izq[i]    = (i*32, 32, 32, 32)
-            dcha[i]   = (i*32, 64, 32, 32)
-            arriba[i] = (i*32, 96, 32, 32)
+            abajo[i]  = (i*35, 0, 32, 32)
+            izq[i]    = (i*35, 35, 32, 32)
+            dcha[i]   = (i*35, 75, 32, 32)
+            arriba[i] = (i*35, 105, 32, 32)
 
         return ({'A':abajo, 'U':arriba, 'D':dcha, 'I':izq})
 
