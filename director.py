@@ -59,10 +59,11 @@ class Director:
                         self.main_character.move_right()
 
                     if event.key == pygame.K_UP:
-                        jump_sound = pygame.mixer.Sound(
-                            os.path.abspath(config.sounds+config.jump_sound))
-                        jump_sound.play()
-                        self.main_character.jump()
+                        if self.main_character.on_ground:
+                            jump_sound = pygame.mixer.Sound(
+                                os.path.abspath(config.sounds+config.jump_sound))
+                            jump_sound.play()
+                            self.main_character.jump()
 
                     if event.key == pygame.K_RCTRL:
                         self.main_character.attack(self.scene.enemy_list)
