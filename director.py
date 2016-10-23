@@ -51,9 +51,7 @@ class Director:
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     self.quit()
-
-                elif event.type == pygame.KEYDOWN :
-                    index = (index + 1) % 3
+                elif event.type == pygame.KEYDOWN:
                     if event.key == pygame.K_LEFT or pygame.key.get_pressed()[pygame.K_LEFT]:
                         self.main_character.move_left()
 
@@ -62,7 +60,7 @@ class Director:
 
                     if event.key == pygame.K_UP:
                         jump_sound = pygame.mixer.Sound(
-                        os.path.abspath(config.sounds+config.jump_sound))
+                            os.path.abspath(config.sounds+config.jump_sound))
                         jump_sound.play()
                         #self.main_character.jump()
 
@@ -91,11 +89,11 @@ class Director:
             if self.main_character.rect.x <= 120:
                 diff = 120 - self.main_character.rect.x
                 self.main_character.rect.x = 120
-                self.scene.on_event(diff)           
+                self.scene.on_event(diff)
 
-            # Draws scene
+                # Draws scene
             seconds += self.time
-            self.scene.on_draw(self.screen, seconds, self.main_character, index)
+            self.scene.on_draw(self.screen, seconds, self.main_character)
             pygame.display.flip()
 
     def change_scene(self, scene):

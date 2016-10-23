@@ -54,8 +54,8 @@ class Character(Physics):
 
         return ({'A':abajo, 'U':arriba, 'D':dcha, 'I':izq})
 
-    def draw(self, screen, index=0):
-        screen.blit(self.image, self.position, self.movimientos[self.direction][index])
+    def draw(self, screen):
+        screen.blit(self.image, self.position, self.movimientos[self.direction][self.index])
 
     def attack(self):
         raise NotImplemented("Implement the atack in MainCharacter and Enemy")

@@ -64,7 +64,7 @@ class SceneGame(scene.Scene):
         for enemy in self.enemy_list:
             enemy.rect.x += shift_x
 
-    def on_draw(self, screen, seconds, player, index):
+    def on_draw(self, screen, seconds, player):
         """ Draw everything on this level. """
 
         # Draw the background
@@ -88,7 +88,7 @@ class SceneGame(scene.Scene):
         screen.blit(timer_label, timer_label_rect)
 
         #Load main character
-        player.draw(screen, index)
+        player.draw(screen)
 
     def on_resize(self, screen, event):
         screen = pygame.display.set_mode(event.dict['size'], HWSURFACE|DOUBLEBUF|RESIZABLE)
