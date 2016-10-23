@@ -52,7 +52,6 @@ class Director:
                 if event.type == pygame.QUIT:
                     self.quit()
                 elif event.type == pygame.KEYDOWN:
-                    print(event.key)
                     if event.key == pygame.K_LEFT or pygame.key.get_pressed()[pygame.K_LEFT]:
                         self.main_character.move_left()
 

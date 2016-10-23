@@ -90,7 +90,9 @@ class SceneGame(scene.Scene):
         #screen.blit(timer_label, timer_label_rect)
 
         #Load main character
-        self.enemy_list.sprites()[0].attack()
+        for i in self.enemy_list.sprites():
+            i.attack()
+        # self.enemy_list.sprites()[0].attack()
         player.draw(screen)
 
     def on_resize(self, screen, event):

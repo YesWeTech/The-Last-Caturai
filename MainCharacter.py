@@ -33,8 +33,11 @@ class MainCharacter(Character):
         self.rect.y = position[1]
 
     def attack(self, group_enemies):
-        passblocks_hit_list = pygame.sprite.spritecollide(self.sprite, group_enemies, False)
+        passblocks_hit_list = pygame.sprite.spritecollide(self, group_enemies, False)
 
         for hit in passblocks_hit_list:
-            pass
+            hit.hp -= 3
+            print(hit.hp)
+            if hit.hp <= 0:
+                pygame.sprite.Sprite.kill(hit)
 
