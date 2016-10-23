@@ -22,11 +22,12 @@ This file is part of The Last Caturai.
 
 """It defines the general enemies of the game."""
 
-from Character import Character
-from Shuriken import Shuriken
+
 import os
 import config
 import pygame
+from Character import Character
+from Shuriken import Shuriken
 
 class Enemy(Character):
     def __init__(self, hp, position, sprite):

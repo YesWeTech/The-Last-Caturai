@@ -1,4 +1,4 @@
-import pygame, scene_game
+import pygame
 from graphics import load_image
 from config import GROUND_HEIGHT
 
