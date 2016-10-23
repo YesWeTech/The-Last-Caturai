@@ -30,7 +30,7 @@ import config
 class Physics(pygame.sprite.Sprite):
 
     def __init__(self, img_path, position):
-
+        super().__init__()
         # measures the change on X and Y
         self.__position_y__, self.__position_x__ = 0, 0
         # Fetch the rectangle object that has the dimensions of the image

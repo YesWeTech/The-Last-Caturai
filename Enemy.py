@@ -25,7 +25,7 @@ This file is part of The Last Caturai.
 from Character import Character
 import pygame
 
-class Enemy(Character, pygame.sprite.Sprite):
+class Enemy(Character):
     def __init__(self, hp, position, sprite):
         super(Enemy, self).__init__(hp, position, sprite)
 
