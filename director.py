@@ -114,7 +114,10 @@ class Director:
                 # Draws scene
             seconds += self.time
 
-            self.scene.on_draw(self.screen, seconds, self.main_character)
+            if self.main_character.hp <= 0:
+                self.scene.on_draw(self.screen, seconds, False)
+            else:
+                self.scene.on_draw(self.screen, seconds, self.main_character)
 
             if self.main_character.hp > 0:
                 timer_label, timer_label_rect = graphics.text("HP ", 30, 20, config.font_colour,40)
