@@ -89,8 +89,8 @@ class SceneGame(scene.Scene):
         #screen.blit(timer, timer_rect)
         #screen.blit(timer_label, timer_label_rect)
         #Load main character
-        # for i in self.enemy_list.sprites():
-        self.enemy_list.sprites()[0].attack(player=player, screen=screen)
+        for i in self.enemy_list.sprites():
+            i.attack(player=player, screen=screen)
 
         player.draw(screen)
 
