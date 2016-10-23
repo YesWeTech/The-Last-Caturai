@@ -24,21 +24,22 @@ This file is part of The Last Caturai.
 """Class that implement the physics of particles, such
     as characters, throwing weapons, etc."""
 
+import config
+
 class Physics(pygame.sprite.Sprite):
 
     def __init__(self, img_path, position):
 
-        # speed component of the particle
-        # self.__x_speed_vector__ = 0.
         # measures the change on X and Y
         self.__position_y__, self.__position_x__ = 0, 0
         # Fetch the rectangle object that has the dimensions of the image
         # Update the position of this object by setting the values of rect.x and rect.y
         self.image = load_image(img_path, True)
         self.rect = self.image.get_rect()
-        # self.rect.x = position[0]
-        # self.rect.y = position[1]
         self.position = position
+        # speed component of the particle
+        self.x_speed_vector_ = 0
+        self.y_speed_vector_ = 0
 
     # Set the value of the speed vector
     def change_x_speed_vector(self, speed):
@@ -49,24 +50,14 @@ class Physics(pygame.sprite.Sprite):
         self.y_speed_vector__ = abs(angle)
 
     def move_right(self):
-        x = self.position[0]
-        y = self.position[1]
-        x += 10
         self.x_speed_vector_ = 10
-        # self.change_x_speed_vector(10)
-        self.position = (x,y)
 
     def move_left(self):
-        x = self.position[0]
-        y = self.position[1]
-        x -= 10
         self.x_speed_vector_ = -10
-        # self.change_x_speed_vector(-10)
-        self.position = (x,y)
 
     def stop_moving(self):
-        self.change_x_speed_vector(0)
-        self.change_y_speed_vector(0)
+        self.x_speed_vector_ = 0
+        self.y_speed_vector_ = 0
 
     def gravity(self):
         # add gravity effect to the Y positon
@@ -76,12 +67,17 @@ class Physics(pygame.sprite.Sprite):
             self.__position_y__ += .35
 
         # See if we are on the ground.
-        if self.rect.y >= constants.SCREEN_HEIGHT - self.rect.height and self.__position_y__ >= 0:
+        if self.rect.y >= config.HEIGHT - self.rect.height and self.__position_y__ >= 0:
             self.__position_y__ = 0
-            self.rect.y = constants.SCREEN_HEIGHT - self.rect.height
+            self.rect.y = config.HEIGHT - self.rect.height
 
     def update(self):
         self.gravity()
 
         self.rect.x += self.x_speed_vector_
+        self.rect.y += self.y_speed_vector_
+
+        self.position = (self.rect.x, self.rect.y)
+
+
 

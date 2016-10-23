@@ -49,15 +49,12 @@ class Director:
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     self.quit()
-                #if event.type == VIDEORESIZE:
-                    #self.scene.on_resize(self.screen, event)
 
-                elif event.type == pygame.KEYDOWN:
-                    if event.key == pygame.K_LEFT:
+                elif event.type == pygame.KEYDOWN :
+                    if event.key == pygame.K_LEFT or pygame.key.get_pressed()[pygame.K_LEFT]:
                         self.main_character.move_left()
 
-                    if event.key == pygame.K_RIGHT:
-                        # self.main_character.change_x_speed_vector(10)
+                    if event.key == pygame.K_RIGHT or pygame.key.get_pressed()[pygame.K_RIGHT]:
                         self.main_character.move_right()
 
                     if event.key == pygame.K_UP:
@@ -72,11 +69,14 @@ class Director:
                     if event.key == pygame.K_RIGHT and self.main_character.x_speed_vector_ > 0:
                         self.main_character.stop_moving()
 
+            self.main_character.update()
+
             # Event detection
             self.scene.on_event()
 
             # Scene update
             self.scene.on_update()
+            pygame.display.update()
 
             # Draws scene
             seconds += self.time
