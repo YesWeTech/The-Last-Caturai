@@ -8,7 +8,19 @@ a long time waiting he finally fished an _evil carp_. He was very happy because 
 but in that moment, the _team rat_ band stole his carp and fade away.
  
  Pepe became very sad but after a while, he realised that he had to recover his carp. So he swore revenge to the _team rat_ 
- and left for an adventure! Will Pepe get back his _evil carp_? That depends on you! 
+ and left for an adventure! Will Pepe get back his _evil carp_? That depends on you!
+ 
+## How to play
+
+The player moves with direction keys in three different ways:
+
+* __Right key__: to move to the right
+
+* __Left key__: to move to the left
+
+* __Up key__: to jump
+
+* __Down key__: to attack
 
 ## Music
 

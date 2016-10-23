@@ -43,6 +43,7 @@ class Director:
         """Starts the game"""
 
         seconds = 0
+        index = 0
 
         while not self.quit_flag:
             self.time = self.clock.tick(60)
@@ -50,8 +51,7 @@ class Director:
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     self.quit()
-
-                elif event.type == pygame.KEYDOWN :
+                elif event.type == pygame.KEYDOWN:
                     if event.key == pygame.K_LEFT or pygame.key.get_pressed()[pygame.K_LEFT]:
                         self.main_character.move_left()
 
@@ -60,9 +60,9 @@ class Director:
 
                     if event.key == pygame.K_UP:
                         jump_sound = pygame.mixer.Sound(
-                        os.path.abspath(config.sounds+config.jump_sound))
+                            os.path.abspath(config.sounds+config.jump_sound))
                         jump_sound.play()
-                        #self.main_character.jump()
+                        self.main_character.jump()
 
                 elif event.type == pygame.KEYUP:
                     if event.key == pygame.K_LEFT and self.main_character.x_speed_vector_ < 0:
@@ -89,9 +89,9 @@ class Director:
             if self.main_character.rect.x <= 120:
                 diff = 120 - self.main_character.rect.x
                 self.main_character.rect.x = 120
-                self.scene.on_event(diff)           
+                self.scene.on_event(diff)
 
-            # Draws scene
+                # Draws scene
             seconds += self.time
             self.scene.on_draw(self.screen, seconds, self.main_character)
             pygame.display.flip()

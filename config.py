@@ -36,6 +36,7 @@ back_colour = (160, 160, 160)
 # Default screen resolution - window sizs
 WIDTH = 800
 HEIGHT = 567
+GROUND_HEIGHT = HEIGHT - 100
 
 # Folder structure
 sprites = "resources/graphics/sprites/"
