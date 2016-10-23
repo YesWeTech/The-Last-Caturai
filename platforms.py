@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-"""platform.py"""
+"""platforms.py"""
 
 """
 This file is part of The Last Caturai.
@@ -24,10 +24,12 @@ This file is part of The Last Caturai.
 import pygame
 import tile
 
-GRASS_UP = (196, 196, 196, 196)
-GRASS_DOWN = (196, 588, 196, 196)
-STONE_UP = (392, 196, 196, 196)
-STONE_DOWN = (0, 196, 196, 196)
+GRASS_LEFT            = (576, 720, 70, 70)
+GRASS_RIGHT           = (576, 576, 70, 70)
+GRASS_MIDDLE          = (504, 576, 70, 70)
+STONE_PLATFORM_LEFT   = (432, 720, 70, 40)
+STONE_PLATFORM_MIDDLE = (648, 648, 70, 40)
+STONE_PLATFORM_RIGHT  = (792, 648, 70, 40)
 
 class Platform(pygame.sprite.Sprite):
 
@@ -35,7 +37,7 @@ class Platform(pygame.sprite.Sprite):
 
         pygame.sprite.Sprite.__init__(self)
 
-        tile_sheet = SpriteSheet("tileset.jpg")
+        tile_sheet = tile.Tile("tileset.png")
         self.image = tile_sheet.get_image(tile_sheet_data[0], tile_sheet_data[1], tile_sheet_data[2], tile_sheet_data[3])
 
         self.rect = self.image.get_rect()

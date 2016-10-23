@@ -28,7 +28,8 @@ import scene_game
 def main():
     dir = director.Director()
     scene = scene_game.SceneGame(dir)
-    dir.change_scene(scene)
+    level = scene_game.Level_01(dir)
+    dir.change_scene(level)
     dir.loop()
 
 if __name__ == '__main__':

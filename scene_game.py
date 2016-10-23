@@ -28,7 +28,7 @@ import graphics
 import os
 from pygame.locals import *
 from Character import Character
-import platform
+import platforms
 
 class SceneGame(scene.Scene):
 
@@ -96,27 +96,28 @@ class SceneGame(scene.Scene):
 
 # Create platforms for the level
 class Level_01(SceneGame):
-    """ Definition for level 1. """
 
     def __init__(self, director):
-        """ Create level 1. """
 
         # Call the parent constructor
         SceneGame.__init__(self, director)
 
-        self.background = graphics.load_image(config.backs+"temp_background.png", False)
+        self.background = graphics.load_image(config.backs+"level1_background.png", False)
         self.level_limit = -2500
 
         # Array with type of platform, and x, y location of the platform.
-        level = [ [platforms.GRASS_UP, 500, 500],
-                  [platforms.GRASS_DOWN, 570, 500],
-                  [platforms.GRASS_UP, 640, 500],
-                  [platforms.GRASS_DOWN, 800, 400],
-                  [platforms.GRASS_DOWN, 870, 400],
-                  [platforms.GRASS_DOWN, 940, 400],
-                  [platforms.STONE_PLATFORM_UP, 1120, 280],
-                  [platforms.STONE_PLATFORM_DOWN, 1190, 280],
-                  [platforms.STONE_PLATFORM_DOWN, 1260, 280],
+        level = [ [platforms.GRASS_LEFT, 500, 500],
+                  [platforms.GRASS_MIDDLE, 570, 500],
+                  [platforms.GRASS_RIGHT, 640, 500],
+                  [platforms.GRASS_LEFT, 800, 400],
+                  [platforms.GRASS_MIDDLE, 870, 400],
+                  [platforms.GRASS_RIGHT, 940, 400],
+                  [platforms.GRASS_LEFT, 1000, 500],
+                  [platforms.GRASS_MIDDLE, 1070, 500],
+                  [platforms.GRASS_RIGHT, 1140, 500],
+                  [platforms.STONE_PLATFORM_LEFT, 1120, 280],
+                  [platforms.STONE_PLATFORM_MIDDLE, 1190, 280],
+                  [platforms.STONE_PLATFORM_RIGHT, 1260, 280],
                   ]
 
 
@@ -129,7 +130,7 @@ class Level_01(SceneGame):
             self.platform_list.add(block)
 
         # Add a custom moving platform
-        block = platforms.MovingPlatform(platforms.STONE_PLATFORM_UP)
+        block = platforms.MovingPlatform(platforms.STONE_PLATFORM_MIDDLE)
         block.rect.x = 1350
         block.rect.y = 280
         block.boundary_left = 1350
