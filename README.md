@@ -1,7 +1,7 @@
 # The-Last-Caturai
 Game developed for the ___Granada Game Jam 2016___.
 
-Arch Linux users will need to install `smpeg` package to run the program.
+Arch Linux, UBUNTU 16.04 and generally Linux users will need to install `smpeg` package to run the program.
 
 ## History
 
